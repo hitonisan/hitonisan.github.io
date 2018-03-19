@@ -119,14 +119,14 @@ function normalizeCrit(givenCrit)
 
 function calcOptimum()
 {
-	var weapBaseAP = parseInt(document.getElementById("baseWeapBox").value);
-	var minAP = parseInt(document.getElementById("weapMinBox").value);
-	var maxAP = parseInt(document.getElementById("weapMaxBox").value);
-	var overallBaseAP = parseInt(document.getElementById("baseAPBox").value);
+	var weapBaseAP = parseFloat(document.getElementById("baseWeapBox").value);
+	var minAP = parseFloat(document.getElementById("weapMinBox").value);
+	var maxAP = parseFloat(document.getElementById("weapMaxBox").value);
+	var overallBaseAP = parseFloat(document.getElementById("baseAPBox").value);
 	
 	//The percentages here are converted to decimal
-	var percDmg = parseInt(document.getElementById("percentAtkBox").value) / 100;
-	var CDM = parseInt(document.getElementById("critModBox").value) / 100;
+	var percDmg = parseFloat(document.getElementById("percentAtkBox").value) / 100;
+	var CDM = parseFloat(document.getElementById("critModBox").value) / 100;
 	var defPrc = parseFloat(document.getElementById("defenseBox").value) / 100;
 	
 	var userPrc = parseInt(document.getElementById("statPrcBox").value);
