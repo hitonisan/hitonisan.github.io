@@ -1,0 +1,252 @@
+<!DOCTYPE HTML5>
+
+<!-- Written by Hitotsuoboe, for anyone to use -->
+
+<html>
+<head>
+<title>Damage Stat Optimizer</title>
+</head>
+
+<body>
+<h3>Hitotsuoboe's Damage Stat Optimizer</h3>
+
+<h5>Enter your weapon's base attack power, after passives:</h5>
+<input id = "baseWeapBox" type = "text" name = "baseBoxW">
+
+<h5>Enter your weapon's minimum attack power, after passives:</h5>
+<input id = "weapMinBox" type = "text" name = "minBox">
+
+<h5>Enter your weapon's maximum attack power, after passives:</h5>
+<input id = "weapMaxBox" type = "text" name = "maxBox">
+
+<h5>Enter your overall base attack power, after passives:</h5>
+<input id = "baseAPBox" type = "text" name = "baseBoxO">
+
+<h5>Enter the percent damage of your attack:</h5>
+<input id = "percentAtkBox" type = "text" name = "percAtkBox">
+
+<h5>Enter your critical damage modifier:</h5>
+<input id = "critModBox" type = "text" name = "CDMBox" value = "150">
+
+<h5>Enter your target's percent defense:</h5>
+<input id = "defenseBox" type = "text" name = "defBox" value = "0">
+
+<h5>Enter the percent stats you want to distribute:</h5>
+<input id = "statPrcBox" type = "text" name = "statBox">
+
+<br>
+<br>
+
+<button onclick = "calcOptimum()" >Find optimum stat distribution</button>
+
+<p id = "maximizeResults"></p>
+<p id = "critRateResults"></p>
+<p id = "addDmgResults"></p>
+
+<script>
+
+function normalizeMax(givenMax)
+{
+	if(givenMax < 40)
+	{
+		return givenMax;
+	}
+	else if(givenMax >= 40 && givenMax < 80) //75% efficiency
+	{
+		return 40 + (((givenMax - 40) * 75) / 100);
+	}
+	else if(givenMax >= 80 && givenMax < 120) //50% efficiency
+	{
+		return 70 + (((givenMax - 80) * 5) / 10);
+	}
+	else if(givenMax >= 120 && givenMax < 160) //25% efficiency
+	{
+		return 90 + (((givenMax - 120) * 25) / 100);
+	}
+	else //0% efficiency
+	{
+		return 100;
+	}
+}
+
+function normalizeAdd(givenAdd)
+{
+	if(givenAdd < 40)
+	{
+		return givenAdd;
+	}
+	else if(givenAdd >= 40 && givenAdd < 80) //75% efficiency
+	{
+		return 40 + (((givenAdd - 40) * 75) / 100);
+	}
+	else if(givenAdd >= 80 && givenAdd < 125) //50% efficiency
+	{
+		return 70 + (((givenAdd - 80) * 5) / 10);
+	}
+	else if(givenAdd >= 125 && givenAdd < 155) //25% efficiency
+	{
+		return 92.5 + (((givenAdd - 125) * 25) / 100);
+	}
+	else //0% efficiency
+	{
+		return 100;
+	}
+}
+
+function normalizeCrit(givenCrit)
+{
+	if(givenCrit < 40)
+	{
+		return givenCrit;
+	}
+	else if(givenCrit >= 40 && givenCrit < 75) //80% efficiency
+	{
+		return 40 + (((givenCrit - 40) * 8) / 10);
+	}
+	else if(givenCrit >= 75 && givenCrit < 105) //60% efficiency
+	{
+		return 68 + (((givenCrit - 75) * 6) / 10);
+	}
+	else if(givenCrit >= 105 && givenCrit < 140) //40% efficiency
+	{
+		return 86 + (((givenCrit - 105) * 4) / 10);
+	}
+	else //0% efficiency
+	{
+		return 100;
+	}
+}
+
+function calcOptimum()
+{
+	var weapBaseAP = parseInt(document.getElementById("baseWeapBox").value);
+	var minAP = parseInt(document.getElementById("weapMinBox").value);
+	var maxAP = parseInt(document.getElementById("weapMaxBox").value);
+	var overallBaseAP = parseInt(document.getElementById("baseAPBox").value);
+	
+	//The percentages here are converted to decimal
+	var percDmg = parseInt(document.getElementById("percentAtkBox").value) / 100;
+	var CDM = parseInt(document.getElementById("critModBox").value) / 100;
+	var defPrc = parseFloat(document.getElementById("defenseBox").value) / 100;
+	
+	var userPrc = parseInt(document.getElementById("statPrcBox").value);
+	
+	var nWeapAP = overallBaseAP - weapBaseAP;
+	
+	var maxPrc = 0;
+	var critPrc = 0;
+	var addPrc = 0;
+	
+	//These values are unnormalized
+	var maxIncrease = 0;
+	var critIncrease = 0;
+	var addIncrease = 0;
+	
+	var maxMod = 0;
+	var critMod = 0;
+	var addMod = 0;
+	
+	var defMod = 1 - defPrc;
+	
+	for(var i = 0; i < userPrc; i += 1)
+	{
+		//Find damage increase from 1% increase in maximize
+		//Apply normalization effects
+		
+		maxIncrease = (percDmg * defMod * (maxAP - minAP) * (1 + (1 - (critPrc / 100) + ((critPrc / 100) * CDM)))) / 200;
+		
+		if(maxPrc < 40) //100% efficiency
+		{}
+		else if(maxPrc >= 40 && maxPrc < 80) //75% efficiency
+		{
+			 maxIncrease *= 0.75;
+		}
+		else if(maxPrc >= 80 && maxPrc < 120) //50% efficiency
+		{
+			maxIncrease *= 0.5;
+		}
+		else if(maxPrc >= 120 && maxPrc < 160) //25% efficiency
+		{
+			maxIncrease *= 0.25;
+		}
+		else if(maxPrc >= 160) //0% efficiency
+		{
+			maxIncrease = 0;
+		}
+		
+		//Find damage increase from 1% increase in critical hit rate
+		//Apply normalization effects
+		
+		critIncrease = (percDmg * defMod * (-1 + CDM) * (overallBaseAP + (((maxAP - minAP) * (maxPrc / 100)) / 2))) / 100;
+		
+		if(critPrc < 40) //100% efficiency
+		{}
+		else if(critPrc >= 40 && critPrc < 75) //80% efficiency
+		{
+			 critIncrease *= 0.8;
+		}
+		else if(critPrc >= 75 && critPrc < 105) //60% efficiency
+		{
+			critIncrease *= 0.6;
+		}
+		else if(critPrc >= 105 && critPrc < 140) //40% efficiency
+		{
+			critIncrease *= 0.4;
+		}
+		else if(critPrc >= 140) //0% efficiency
+		{
+			critIncrease = 0;
+		}
+		
+		//Find damage increase from 1% increase in additional damage
+		//Apply normalization effects
+		
+		addIncrease = (9 * overallBaseAP * Math.pow(percDmg, 0.65)) / 1600;
+		
+		if(addPrc < 40) //100% efficiency
+		{}
+		else if(addPrc >= 40 && addPrc < 80) //75% efficiency
+		{
+			 addIncrease *= 0.75;
+		}
+		else if(addPrc >= 80 && addPrc < 125) //50% efficiency
+		{
+			addIncrease *= 0.5;
+		}
+		else if(addPrc >= 125 && addPrc < 155) //25% efficiency
+		{
+			addIncrease *= 0.25;
+		}
+		else if(addPrc >= 155) //0% efficiency
+		{
+			addIncrease = 0;
+		}
+		
+		//Compare increases, find the greatest, and increase that stat
+		if(maxIncrease >= critIncrease && maxIncrease >= addIncrease)
+		{
+			maxPrc += 1;
+		}
+		else if(critIncrease >= maxIncrease && critIncrease >= addIncrease)
+		{
+			critPrc += 1;
+		}
+		else
+		{
+			addPrc += 1;
+		}
+	}
+	//Loop complete - display results
+	
+	var normMaxPrc = normalizeMax(maxPrc);
+	var normCritPrc = normalizeCrit(critPrc);
+	var normAddPrc = normalizeAdd(addPrc);
+	
+	document.getElementById("maximizeResults").innerHTML = "Unnormalized maximize %: " + maxPrc + " (Normalized %: " + normMaxPrc + ")";
+	document.getElementById("critRateResults").innerHTML = "Unnormalized crit. rate %: " + critPrc + " (Normalized %: " + normCritPrc + ")";
+	document.getElementById("addDmgResults").innerHTML = "Unnormalized add. damage %: " + addPrc+ " (Normalized %: " + normAddPrc + ")";
+}
+
+</script>
+</body>
+</html>
