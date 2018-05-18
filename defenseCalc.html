@@ -1,0 +1,67 @@
+<!DOCTYPE HTML5>
+
+<!-- Written by Hitotsuoboe, for anyone to use -->
+
+<html>
+
+<head>
+<title>Defense Power Calculator</title>
+</head>
+
+<body>
+<h3>Hito's Defense Power Calculator</h3>
+
+<h5>Note: equation for defense calculations obtained via estimation; small amounts of error are possible</h5>
+<h4>Enter either your defense power or target percent defense in the boxes below</h4>
+
+
+<h5>Defense power:</h5>
+<input id="defValBox" type="text" name="valBox" onfocusout="clearPerc()">
+
+<hr>
+
+<h5>Percent defense:</h5>
+<input id="percDefBox" type="text" name="percBox" onfocusout="clearVal()">
+
+<br>
+<br>
+
+<button id="opButton" onclick = "calcDef()">Calculate</button>
+
+<script>
+var flag = 0;
+
+function clearPerc()
+{
+	document.getElementById("percDefBox").value = "";
+	document.getElementById("opButton").innerText = "Calculate percent defense";
+	flag = 0;
+}
+
+function clearVal()
+{
+	document.getElementById("defValBox").value = "";
+	document.getElementById("opButton").innerText = "Calculate defense power";
+	flag = 1;
+}
+
+function calcDef()
+{
+	if(flag == 0) //Defense power used to calculate percent defense
+	{
+		var defPow = document.getElementById("defValBox").value;
+		var percResult = 0;
+		if(defPow > 0)
+			var percResult = 100 + (-100 / (1.0 + (defPow / 4154.0)));
+		document.getElementById("percDefBox").value = percResult;
+	}
+	else //Percent defense used to calculate defense power
+	{
+		var percDef = document.getElementById("percDefBox").value;
+		var defValResult = 4154 * ((-100 / (percDef - 100)) - 1)
+		document.getElementById("defValBox").value = defValResult;
+	}
+}
+</script>
+</body>
+</html>
