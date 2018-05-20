@@ -51,16 +51,16 @@ function calcDef()
 {
 	if(flag == 0) //Defense power used to calculate percent defense
 	{
-		var defPow = document.getElementById("defValBox").value;
+		var defPow = parseFloat(document.getElementById("defValBox").value);
 		var percResult = 0;
 		if(defPow > 0)
-			var percResult = 100 + (-100 / (1.0 + (defPow / 4154.0)));
+			percResult = (100 * defPow) / (defPow + 4154);
 		document.getElementById("percDefBox").value = percResult;
 	}
 	else //Percent defense used to calculate defense power
 	{
-		var percDef = document.getElementById("percDefBox").value;
-		var defValResult = 4154 * ((-100 / (percDef - 100)) - 1)
+		var percDef = parseFloat(document.getElementById("percDefBox").value);
+		var defValResult = (-4154 * percDef) / (percDef - 100)
 		document.getElementById("defValBox").value = defValResult;
 	}
 }
