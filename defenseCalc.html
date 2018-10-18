@@ -6,63 +6,86 @@
 
 <head>
 <title>Defense Power Calculator</title>
+<style>
+* {
+	box-sizing: border-box;
+}
+
+.container {
+	border: 4px solid red;
+	border-radius: 20px;
+	max-width: 50%;
+	padding: 10px;
+	margin: auto;
+	overflow: auto;
+}
+
+.header {
+	background-color: gray;
+	font-size: 18px;
+	color: white;
+	text-align: center;
+}
+
+#values {
+	float: left;
+	width: 50%;
+}
+
+#percents {
+	float: right;
+	width: 50%;
+}
+
+h5, input {
+	display: inline-block;
+}
+
+li {
+	font-weight: bold;
+	font-size: 15px;
+	text-align: center;
+}
+</style>
 </head>
 
 <body>
-<h3>Hito's Defense Power Calculator</h3>
+<div class="header">Hito's Defense Power Calculator</div>
 
-<h5>Note: equation for defense calculations obtained via estimation; small amounts of error are possible</h5>
-<h5>This calculator assumes a level 99 character is used - defense is more effective at lower levels</h5>
+<ul style="list-style-type: none;">
+	<li>Note: equation for defense calculations obtained via estimation; small amounts of error are possible</li>
+	<li>This calculator assumes a level 99 character is used - defense is more effective at lower levels</li>
+</ul>
 
-<h4>Enter either your defense power or target percent defense in the boxes below</h4>
 
-
+<div class="container">
+<p style="text-align: center;">Enter one value, and the other will be automatically calculated.</p>
+<div id="values">
 <h5>Defense power:</h5>
-<input id="defValBox" type="text" name="valBox" onfocusout="clearPerc()">
+<input id="defValBox" type="text" name="valBox" onfocusout="calcVal()">
+</div>
 
-<hr>
-
+<div id="percents">
 <h5>Percent defense:</h5>
-<input id="percDefBox" type="text" name="percBox" onfocusout="clearVal()">
-
-<br>
-<br>
-
-<button id="opButton" onclick = "calcDef()">Calculate</button>
+<input id="percDefBox" type="text" name="percBox" onfocusout="calcPerc()">
+</div>
+</div>
 
 <script>
-var flag = 0;
-
-function clearPerc()
+function calcPerc()
 {
-	document.getElementById("percDefBox").value = "";
-	document.getElementById("opButton").innerText = "Calculate percent defense";
-	flag = 0;
+	var percDef = parseFloat(document.getElementById("percDefBox").value);
+	var defValResult = (-4154 * percDef) / (percDef - 100)
+	document.getElementById("defValBox").value = defValResult;
 }
 
-function clearVal()
+function calcVal()
 {
-	document.getElementById("defValBox").value = "";
-	document.getElementById("opButton").innerText = "Calculate defense power";
-	flag = 1;
-}
-
-function calcDef()
-{
-	if(flag == 0) //Defense power used to calculate percent defense
-	{
-		var defPow = parseFloat(document.getElementById("defValBox").value);
-		var percResult = 0;
-		if(defPow > 0)
-			percResult = (100 * defPow) / (defPow + 4154);
-		document.getElementById("percDefBox").value = percResult;
-	}
-	else //Percent defense used to calculate defense power
-	{
-		var percDef = parseFloat(document.getElementById("percDefBox").value);
-		var defValResult = (-4154 * percDef) / (percDef - 100)
-		document.getElementById("defValBox").value = defValResult;
-	}
+	var defPow = parseFloat(document.getElementById("defValBox").value);
+	var percResult = 0;
+	if(defPow > 0)
+		percResult = (100 * defPow) / (defPow + 4154);
+	document.getElementById("percDefBox").value = percResult;
 }
 </script>
 </body>
