@@ -11,6 +11,11 @@
 	box-sizing: border-box;
 }
 
+.centered {
+	position: absolute;
+	margin: auto;
+}
+
 .container {
 	border: 4px solid red;
 	border-radius: 20px;
@@ -27,14 +32,23 @@
 	text-align: center;
 }
 
-#values {
+#values, #fixedMods {
 	float: left;
 	width: 50%;
 }
 
-#percents {
+#percents, #customMods {
 	float: right;
 	width: 50%;
+}
+
+#endDiv {
+	display: block;
+	clear: both;
+}
+
+#resultDiv {
+	clear: both;
 }
 
 h5, input {
@@ -58,28 +72,81 @@ li {
 
 <ul style="list-style-type: none;">
 	<li>Note: equation for defense calculations obtained via estimation; small amounts of error are possible</li>
-	<li>This calculator assumes a level 99 character is used - defense is more effective at lower levels</li>
 </ul>
 
 
 <div class="container">
 <p style="text-align: center;">Enter one value, and the other will be automatically calculated.</p>
+<div style="text-align: center;">
+<form style="font-weight: bold;">
+Level: 
+<input id="levelValBox" type="number" name="levelBox" min="1" max="99" value="99" onfocusout="findLevelVal()"></input>
+</form>
+</div>
 <div id="values">
 <h5>Defense power:</h5>
-<input id="defValBox" type="text" name="valBox" onfocusout="calcVal()">
+<input id="defValBox" type="text" name="valBox" onfocusout="calcVal()" value=4153.65>
 </div>
 
 <div id="percents">
 <h5>Percent defense:</h5>
-<input id="percDefBox" type="text" name="percBox" onfocusout="calcPerc()">
+<input id="percDefBox" type="text" name="percBox" onfocusout="calcPerc()" value=50>
+</div>
+</div>
+
+<br />
+
+<div class="container">
+<p style="text-align: center;">Use the calculator above to set defense, then set defense ignore values here.</p>
+<form>
+<div id="fixedMods">
+<input type="checkbox" name="critBox" id="critCheckBox">Use Critical Trait (50% PvE, 25% PvP)</input><br /><br />
+<input type="checkbox" name="orbBox" id="windOrbBox">Use Wind Orb debuff (50%)</input><br /><br />
+<input type="checkbox" name="modeBox" id="gameModeBox">Use PvP modifiers</input><br /><br />
+<br />
+<select name="freezeDrop" id="freezeStackDrop">
+	<option value="0">0</option>
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+</select>
+Set Freezing stacks (10% per stack, 3 max)
+<br /><br /><br />
+<button type="button" onclick="calcDefIgnore()">Calculate</button>
+</div>
+</form>
+<form id="customIgnores">
+<div id="customMods">
+Enter other defense ignore percents (0 to 100) below: <br />
+<input type="text"></input><br /><br />
+<input type="text"></input><br /><br />
+<input type="text"></input><br /><br />
+<input type="text"></input><br /><br />
+<input type="text"></input><br /><br />
+</div>
+</form>
+<div id="resultDiv">
+<p id="beforeResults" style="text-align: center;">Defense before reduction: </p>
+<p id="afterResults" style="text-align: center;">Defense after reduction: </p>
 </div>
 </div>
 
 <script>
+var givenLevel = 99;
+var levelValue = 0;
+var defIgnoreFactor = 1;
+findLevelVal();
+
+function findLevelVal()
+{
+	givenLevel = parseFloat(document.getElementById("levelValBox").value);
+	levelValue = 258 + (39.35 * givenLevel);
+}
+
 function calcPerc()
 {
 	var percDef = parseFloat(document.getElementById("percDefBox").value);
-	var defValResult = (-4154 * percDef) / (percDef - 100)
+	var defValResult = (levelValue * percDef) / (100 - percDef)
 	document.getElementById("defValBox").value = defValResult;
 }
 
@@ -88,8 +155,65 @@ function calcVal()
 	var defPow = parseFloat(document.getElementById("defValBox").value);
 	var percResult = 0;
 	if(defPow > 0)
-		percResult = (100 * defPow) / (defPow + 4154);
+		percResult = (100 * defPow) / (defPow + levelValue);
 	document.getElementById("percDefBox").value = percResult;
+}
+
+function calcIgnorePerc(postDefense)
+{
+	return (100 * postDefense) / (postDefense + levelValue);
+}
+
+function calcDefIgnore()
+{
+	defIgnoreFactor = 1;
+	
+	//Fixed modifiers
+	//Critical trait
+	if(document.getElementById("critCheckBox").checked)
+	{
+		if(document.getElementById("gameModeBox").checked) //Use PvP modifiers for Critical trait
+		{
+			defIgnoreFactor *= (1 - 0.25);
+		}
+		else //Use PvE modifiers
+		{
+			defIgnoreFactor *= (1 - 0.5);
+		}
+	}
+	
+	//Wind orb debuff
+	if(document.getElementById("windOrbBox").checked)
+		defIgnoreFactor *= (1 - 0.5);
+	
+	//Freezing stacks
+	var freezeMod = parseFloat(document.getElementById("freezeStackDrop").value) * 0.1;
+	defIgnoreFactor *= (1 - freezeMod);
+	
+	
+	
+	//User-defined modifiers
+	var ignoreFields = document.getElementById("customIgnores").elements;
+	var length = ignoreFields.length;
+	var currentFactor = 0;
+	for(var x = 0; x < length; x++)
+	{
+		var currentValue = parseFloat(ignoreFields[x].value);
+		if(isNaN(currentValue) == false)
+		{
+			currentValue /= 100;
+			defIgnoreFactor *= (1 - currentValue);
+		}
+	}
+	
+	//Results
+	var priorDefense = parseFloat(document.getElementById("defValBox").value);
+	var priorPercent = parseFloat(document.getElementById("percDefBox").value);
+	document.getElementById("beforeResults").innerHTML = "Defense before reduction: " + priorDefense + " (" + priorPercent + "%)";
+	
+	var afterDefense = priorDefense * defIgnoreFactor;
+	var afterPercent = calcIgnorePerc(afterDefense);
+	document.getElementById("afterResults").innerHTML = "Defense after reduction: " + afterDefense + " (" + afterPercent + "%)";
 }
 </script>
 </body>
