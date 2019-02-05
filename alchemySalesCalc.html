@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Written by Hitotsuoboe, for anyone to use -->
+	<title>Hito's Alchemy Sales Calculator</title>
+	<style>
+		.active {
+			background-color: #132e6a;
+			color: white;
+		}
+		
+		.imageContainer {
+			background-color: #e9effb;
+			padding: 10px;
+		}
+		
+		.imageContainer img {
+			cursor: pointer;
+			padding: 15px;
+		}
+		
+		.mainContainer {
+			background-color: #132e6a;
+			border-radius: 0px 5px 5px 5px;
+			clear: both;
+			display: none;
+			padding: 10px;
+		}
+	
+		button {
+			background-color: #09c;
+			border: none;
+			display: block;
+			float: left;
+			outline: none;
+			padding: 10px 15px;
+		}
+		
+		button:hover {
+			background-color: #b7e8ec;
+		}
+		
+		caption {
+			color: white;
+			font-size: 18px;
+			padding: 10px 0px;
+			text-align: center;
+		}
+		
+		table {
+			background-color: #e9effb;
+			margin: auto;
+			padding: 30px 0;	
+		}
+		
+		th, td {
+			color: black;
+			padding: 10px;
+			text-align: center;
+			width: 33.333%;
+		}
+		
+		input[type="text"] {
+			padding: 3px;
+			text-align: right;
+		}
+		
+		input:focus {
+			background-color: rgb(236, 209, 149);
+		}
+		
+		.descriptor {
+			font-size: 16px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<div class="tabDiv">
+		<button id="consumeButton" onclick="setActive(0)">Consumables</button>
+		<button id="cardButton" onclick="setActive(1)">Cards</button>
+		<button id="elixirButton" onclick="setActive(2)">Elixirs</button>
+		<button id="otherButton" onclick="setActive(3)">Misc.</button>
+	</div>
+	
+	<div class="mainContainer" id="consumeDiv">
+		<div class="imageContainer">
+			<img src="https://elwiki.net/wiki/images/1/1d/HQ_Shop_Item_78925.png" alt="Advanced Recovery Potion" width="64" height="64" onclick="makeRecipeTable('Advanced Recovery Potion', 5, 'low', 3, 'https://elwiki.net/wiki/images/b/b3/HQ_Shop_Item_91570.png', 'Basic Warrior\'s Potion', 1, 'https://elwiki.net/wiki/images/f/f3/HQ_Shop_Item_91590.png', 'Intermediate Warrior\'s Potion', 1, 1000)"></img>
+			<img src="https://elwiki.net/wiki/images/b/bc/HQ_Shop_Item_78927.png" alt="Advanced Vitality Potion" width="64" height="64" onclick="makeRecipeTable('Advanced Vitality Potion', 5, 'low', 3, 'https://elwiki.net/wiki/images/b/b9/HQ_Shop_Item_132469.png', 'Vigor Potion', 1, null, null, null, 5200)"></img>
+			<img src="https://elwiki.net/wiki/images/a/ac/HQ_Shop_Item_78926.png" alt="Giant Stone Apple" width="64" height="64" onclick="makeRecipeTable('Giant Stone Apple', 5, 'low', 3, 'https://elwiki.net/wiki/images/0/00/Consume_78090.png', 'Giant Apple', 1, 'https://elwiki.net/wiki/images/1/15/Consume_78050.png', 'Stone Apple', 1, 2800)"></img>
+			<img src="https://elwiki.net/wiki/images/1/11/HQ_Shop_Item_78928.png" alt="Superhuman Organic Apple" width="64" height="64" onclick="makeRecipeTable('Superhuman Organic Apple', 5, 'low', 3, 'https://elwiki.net/wiki/images/e/e6/Consume_78080.png', 'Superhuman Apple', 1, 'https://elwiki.net/wiki/images/6/63/Consume_78040.png', 'Organic Apple', 1, 8000)"></img>
+			<img src="https://elwiki.net/wiki/images/6/65/HQ_Shop_Item_78929.png" alt="Twister Andromeda Apple" width="64" height="64" onclick="makeRecipeTable('Twister Andromeda Apple', 10, 'low', 3, 'https://elwiki.net/wiki/images/3/38/Consume_78070.png', 'Twister Apple', 1, 'https://elwiki.net/wiki/images/9/9d/Consume_78060.png', 'Andromeda Apple', 1, 14700)"></img>
+			<img src="https://elwiki.net/wiki/images/c/ce/HQ_Shop_Item_117538.png" alt="Advanced Mana Potion Pouch (Old)" width="64" height="64" onclick="makeRecipeTable('Advanced Mana Potion Pouch (20) (Old)', 20, 'int', 5, 'https://elwiki.net/wiki/images/0/08/HQ_Shop_Item_077180.png', 'Intermediate Mana Potion (Old)', 5, null, null, null, 11200)"></img>
+			<img src="https://elwiki.net/wiki/images/0/0b/HQ_Shop_Item_117539.png" alt="Premium Mana Potion Pouch (Old)" width="64" height="64" onclick="makeRecipeTable('Premium Mana Potion Pouch (20) (Old)', 15, 'prem', 3, 'https://elwiki.net/wiki/images/c/c1/HQ_Shop_Item_78902.png', 'Advanced Mana Potion (Old)', 3, null, null, null, 18500)"></img>
+			<img src="https://elwiki.net/wiki/images/b/b1/HQ_Shop_Item_117541.png" alt="Mana Elixir Pouch (Old)" width="64" height="64" onclick="makeRecipeTable('Mana Elixir Pouch (20) (Old)', 50, 'prem', 5, 'https://elwiki.net/wiki/images/f/f5/HQ_Shop_Item_78930.png', 'Premium Mana Potion (Old)', 5, null, null, null, 27000)"></img>
+			<img src="https://elwiki.net/wiki/images/4/4c/HP_Potion_Premium_Pouch.png" alt="Premium HP Potion Pouch" width="64" height="64" onclick="makeRecipeTable('Premium HP Potion Pouch (20)', 20, 'int', 5, 'https://elwiki.net/wiki/images/3/3c/HP_Potion_Advanced.png', 'Advanced HP Potion', 5, null, null, null, 18500)"></img>
+			<img src="https://elwiki.net/wiki/images/3/38/MP_Potion_Premium_Pouch.png" alt="Premium MP Potion Pouch" width="64" height="64" onclick="makeRecipeTable('Premium MP Potion Pouch (20)', 20, 'int', 5, 'https://elwiki.net/wiki/images/5/54/MP_Potion_Advanced.png', 'Advanced MP Potion', 5, null, null, null, 18500)"></img>
+			<img src="https://elwiki.net/wiki/images/b/b1/HQ_Shop_Item_117541.png" alt="Mana Elixir Pouch" width="64" height="64" onclick="makeRecipeTable('Mana Elixir Pouch (20)', 50, 'prem', 5, 'https://elwiki.net/wiki/images/d/d9/MP_Potion_Premium.png', 'Premium MP Potion', 5, null, null, null, 27000)"></img>
+		</div>
+	</div>
+	
+	<div class="mainContainer" id="cardDiv">
+		<div class="imageContainer">
+			<img src="https://elwiki.net/wiki/images/1/15/HQ_Shop_Item_78922.png" alt="Summon: Hellish Ice Berthe" width="64" height="64" onclick="makeRecipeTable('Summon: Hellish Ice Berthe', 15, 'prem', 3, 'https://elwiki.net/wiki/images/4/4c/HQ_Shop_Item_154066.png', 'Barrier\'s Fragment', 5, null, null, null, 22600)"></img>
+			<img src="https://elwiki.net/wiki/images/b/bc/HQ_Shop_Item_78923.png" alt="Summon: Karis" width="64" height="64" onclick="makeRecipeTable('Summon: Karis', 15, 'prem', 3, 'https://elwiki.net/wiki/images/4/4c/HQ_Shop_Item_154066.png', 'Barrier\'s Fragment', 5, null, null, null, 27000)"></img>
+			<img src="https://elwiki.net/wiki/images/a/a9/HQ_Shop_Item_78924.png" alt="Summon: White Colossus Helputt" width="64" height="64" onclick="makeRecipeTable('Summon: White Colossus Helputt', 15, 'prem', 3, 'https://elwiki.net/wiki/images/4/4c/HQ_Shop_Item_154066.png', 'Barrier\'s Fragment', 5, null, null, null, 31600)"></img>
+			<img src="https://elwiki.net/wiki/images/a/a4/HQ_Shop_Item_78917.png" alt="Card Pack: Apple" width="64" height="64" onclick="makeRecipeTable('Card Pack: Apple (5)', 20, 'int', 5, 'https://elwiki.net/wiki/images/0/02/HQ_Shop_Item_78770.png', 'Epic NPC Card: Apple', 1, null, null, null, 2800)"></img>
+			<img src="https://elwiki.net/wiki/images/7/73/HQ_Shop_Item_78918.png" alt="Card Pack: Lime" width="64" height="64" onclick="makeRecipeTable('Card Pack: Lime (5)', 20, 'int', 5, 'https://elwiki.net/wiki/images/1/19/HQ_Shop_Item_78765.png', 'Epic NPC Card: Lime', 1, null, null, null, 5200)"></img>
+			<img src="https://elwiki.net/wiki/images/2/2e/HQ_Shop_Item_78919.png" alt="Card Pack: Noah" width="64" height="64" onclick="makeRecipeTable('Card Pack: Noah (5)', 20, 'int', 5, 'https://elwiki.net/wiki/images/5/54/HQ_Shop_Item_78763.png', 'Epic NPC Card: Noah', 1, null, null, null, 8000)"></img>
+			<img src="https://elwiki.net/wiki/images/4/40/HQ_Shop_Item_78920.png" alt="Card Pack: Valak" width="64" height="64" onclick="makeRecipeTable('Card Pack: Valak (5)', 20, 'int', 5, 'https://elwiki.net/wiki/images/c/cb/HQ_Shop_Item_78768.png', 'Epic NPC Card: Valak', 1, null, null, null, 11200)"></img>
+			<img src="https://elwiki.net/wiki/images/9/9f/HQ_Shop_Item_78921.png" alt="Card Pack: Proto" width="64" height="64" onclick="makeRecipeTable('Card Pack: Proto (5)', 20, 'int', 5, 'https://elwiki.net/wiki/images/a/a5/HQ_Shop_Item_78769.png', 'Epic NPC Card: Proto', 1, null, null, null, 18500)"></img>
+		</div>
+	</div>
+	
+	<div class="mainContainer" id="elixirDiv">
+		<div class="imageContainer">
+			<img src="https://elwiki.net/wiki/images/d/de/HQ_Shop_Item_78909.png" alt="Blessed Ventus\' Wings" width="64" height="64" onclick="makeRecipeTable('Blessed Ventus\' Wings', 10, 'int', 3, 'https://elwiki.net/wiki/images/7/7a/AngelwingsGoD.png', 'Ventus\' Wings', 1, null, null, null, 1000)"></img>
+			<img src="https://elwiki.net/wiki/images/b/b7/HQ_Shop_Item_78906.png" alt="Ventus\' Wings" width="64" height="64" onclick="makeRecipeTable('Ventus\' Wings', 15, 'prem', 3, 'https://elwiki.net/wiki/images/d/de/HQ_Shop_Item_78909.png', 'Blessed Ventus\' Wings', 1, null, null, null, 22600)"></img>
+			<img src="https://elwiki.net/wiki/images/7/7f/HQ_Shop_Item_78911.png" alt="Blessed Rosso\'s Blazing Ring" width="64" height="64" onclick="makeRecipeTable('Blessed Rosso\'s Blazing Ring', 10, 'int', 3, 'https://elwiki.net/wiki/images/f/f5/RedGoD.png', 'Rosso\'s Blazing Ring', 1, null, null, null, 2800)"></img>
+			<img src="https://elwiki.net/wiki/images/d/d6/HQ_Shop_Item_78907.png" alt="Rosso\'s Calamity Wheel" width="64" height="64" onclick="makeRecipeTable('Rosso\'s Calamity Wheel', 15, 'prem', 3, 'https://elwiki.net/wiki/images/7/7f/HQ_Shop_Item_78911.png', 'Blessed Rosso\'s Blazing Ring', 1, null, null, null, 27000)"></img>
+			<img src="https://elwiki.net/wiki/images/0/03/HQ_Shop_Item_78915.png" alt="Blessed Tracker\'s Soul" width="64" height="64" onclick="makeRecipeTable('Blessed Tracker\'s Soul', 10, 'int', 3, 'https://elwiki.net/wiki/images/1/18/PurpleGoD.png', 'Tracker\'s Soul', 1, null, null, null, 14700)"></img>
+			<img src="https://elwiki.net/wiki/images/6/66/HQ_Shop_Item_78908.png" alt="Tracker\'s Madness" width="64" height="64" onclick="makeRecipeTable('Tracker\'s Madness', 15, 'prem', 3, 'https://elwiki.net/wiki/images/0/03/HQ_Shop_Item_78915.png', 'Blessed Tracker\'s Soul', 1, null, null, null, 31600)"></img>
+			<img src="https://elwiki.net/wiki/images/c/c0/HQ_Shop_Item_78910.png" alt="Blessed Denif\'s Ice Orb" width="64" height="64" onclick="makeRecipeTable('Blessed Denif\'s Ice Orb', 10, 'low', 5, 'https://elwiki.net/wiki/images/a/a1/IceballsGoD.png', 'Denif\'s Ice Orb', 1, null, null, null, 2800)"></img>
+			<img src="https://elwiki.net/wiki/images/2/20/HQ_Shop_Item_78912.png" alt="Blessed Blazing Bomb" width="64" height="64" onclick="makeRecipeTable('Blessed Blazing Bomb', 10, 'low', 5, 'https://elwiki.net/wiki/images/4/4e/FireballsGoD.png', 'Blazing Bomb', 1, null, null, null, 5200)"></img>
+			<img src="https://elwiki.net/wiki/images/e/ef/HQ_Shop_Item_78913.png" alt="Blessed Giant\'s Potion" width="64" height="64" onclick="makeRecipeTable('Blessed Giant\'s Potion', 10, 'low', 5, 'https://elwiki.net/wiki/images/5/5d/MuscleGoD.png', 'Giant\'s Potion', 1, null, null, null, 8000)"></img>
+			<img src="https://elwiki.net/wiki/images/b/b6/HQ_Shop_Item_78914.png" alt="Blessed Giant Hand Potion" width="64" height="64" onclick="makeRecipeTable('Blessed Giant Hand Potion', 10, 'low', 5, 'https://elwiki.net/wiki/images/8/87/GreenpunchGoD.png', 'Giant Hand Potion', 1, null, null, null, 8000)"></img>
+			<img src="https://elwiki.net/wiki/images/4/4f/HQ_Shop_Item_78916.png" alt="Blessed Baby Fairy Cradle" width="64" height="64" onclick="makeRecipeTable('Blessed Baby Fairy Cradle', 10, 'low', 5, 'https://elwiki.net/wiki/images/d/df/FairyGoD.png', 'Baby Fairy Cradle', 1, null, null, null, 18500)"></img>
+		</div>
+	</div>
+	
+	<div class="mainContainer" id="otherDiv">
+		<div class="imageContainer">
+			<img src="https://elwiki.net/wiki/images/7/74/HQ_Shop_Item_117540.png" alt="Archangel\'s Blessing Pouch" width="64" height="64" onclick="makeRecipeTable('Archangel\'s Blessing Pouch (10)', 50, 'prem', 5, null, null, null, null, null, null, 572600)"></img>
+			<img src="https://elwiki.net/wiki/images/f/f2/HQ_Shop_Item_117542.png" alt="Concentrated El Essence Pouch" width="64" height="64" onclick="makeRecipeTable('Concentrated El Essence Pouch (20)', 100, 'prem', 10, 'https://elwiki.net/wiki/images/5/53/ElWater.png', 'El\'s Essence', 10, null, null, null, 31600)"></img>
+		</div>
+	</div>
+	
+	<script>
+	var givenRecipe;
+	
+	function Recipe(givenName, givenCrystals, givenElixType, givenElixCount, givenIngredSrc1, givenAlt1, givenCount1, givenIngredSrc2, givenAlt2, givenCount2, givenCraftCost)
+	{
+		//Note: ingredient variables will be strings - urls to the images of those ingredients
+		this.itemName = givenName;
+		this.crystals = givenCrystals;
+		this.elixirType = givenElixType;
+		this.elixirCount = givenElixCount;
+		this.ingredientSrc1 = givenIngredSrc1;
+		this.altText1 = givenAlt1;
+		this.count1 = givenCount1;
+		this.ingredientSrc2 = givenIngredSrc2;
+		this.altText2 = givenAlt2;
+		this.count2 = givenCount2;
+		this.EDCost = givenCraftCost;
+	}
+	
+	function setActive(givenValue)
+	{
+		var buttonList = document.getElementsByTagName("button");
+		var containerList = document.getElementsByClassName("mainContainer");
+		var i;
+		
+		//Disable active color for all buttons
+		for(i = 0; i < buttonList.length; i++)
+		{
+			buttonList[i].className = buttonList[i].className.replace("active", "");
+		}
+		
+		//Give the clicked button the active color
+		event.currentTarget.className += "active";
+		
+		//Hide all content divs
+		for(i = 0; i < containerList.length; i++)
+		{
+			containerList[i].style.display = "none";
+		}
+		
+		//Show the div corresponding to the clicked button
+		containerList[givenValue].style.display = "block";
+	}
+	
+	function makeRecipeTable(givenName, givenCrystals, givenElixType, givenElixCount, givenIngredSrc1, givenAlt1, givenCount1, givenIngredSrc2, givenAlt2, givenCount2, givenCraftCost)
+	{
+		givenRecipe = new Recipe(givenName, givenCrystals, givenElixType, givenElixCount, givenIngredSrc1, givenAlt1, givenCount1, givenIngredSrc2, givenAlt2, givenCount2, givenCraftCost);
+		var tableList = document.getElementsByTagName("table");
+		var containerList = document.getElementsByClassName("mainContainer");
+		var i;
+	
+		var tableHTML = "<table>";
+		tableHTML += "<caption>" + givenRecipe.itemName + "</caption>";
+		tableHTML += "<tr><th>Item</th><th>Quantity</th><th>Unit Price</th></tr>";
+		
+		//Magical crystals
+		tableHTML += "<tr><td><img src='https://elwiki.net/wiki/images/c/c6/Magical_Crystal.png' alt='Magical Crystals' width=64 height=64></img></td>";
+		tableHTML += "<td>" + givenRecipe.crystals + "</td>";
+		tableHTML += "<td><input type='text' id='crystalPrice' value=0></input></td></tr>";
+		
+		//Elixirs
+		tableHTML += "<tr>";
+		if(givenRecipe.elixirType == "low")
+		{
+			tableHTML += "<td><img src='https://elwiki.net/wiki/images/d/dc/HQ_Shop_Item_117524.png' alt='Low-class Elixir' width=64 height=64></img></td>";
+		}
+		else if (givenRecipe.elixirType == "int")
+		{
+			tableHTML += "<td><img src='https://elwiki.net/wiki/images/4/43/HQ_Shop_Item_117525.png' alt='Intermediate Elixir' width=64 height=64></img></td>";
+		}
+		else
+		{
+			tableHTML += "<td><img src='https://elwiki.net/wiki/images/a/a2/HQ_Shop_Item_117526.png' alt='Premium Elixir' width=64 height=64></img></td>";
+		}
+		tableHTML += "<td>" + givenRecipe.elixirCount + "</td>";
+		tableHTML += "<td><input type='text' id='elixirPrice' value=0></input></td></tr>";
+		
+		//Ingredient 1 (if needed)
+		if(givenRecipe.ingredientSrc1 != null)
+		{
+			tableHTML += "<tr>";
+			tableHTML += "<td><img src='" + givenRecipe.ingredientSrc1 + "' alt='" + givenRecipe.altText1 + "' width=64 height=64</img></td>";
+			tableHTML += "<td>" + givenRecipe.count1 + "</td>";
+			tableHTML += "<td><input type='text' id='ingredPrice1' value=0></input></td></tr>";
+		}
+		
+		//Ingredient 2 (if needed)
+		if(givenRecipe.ingredientSrc2 != null)
+		{
+			tableHTML += "<tr>";
+			tableHTML += "<td><img src='" + givenRecipe.ingredientSrc2 + "' alt='" + givenRecipe.altText2 + "' width=64 height=64</img></td>";
+			tableHTML += "<td>" + givenRecipe.count2 + "</td>";
+			tableHTML += "<td><input type='text' id='ingredPrice2' value=0></input></td></tr>";
+		}
+		
+		//ED cost
+		tableHTML += "<tr><td class='descriptor'>ED Crafting Cost</td><td></td><td id='EDCraftCost'>" + givenRecipe.EDCost + "</td></tr>";
+		
+		//Total cost
+		tableHTML += "<tr><td class='descriptor'>Total Crafting Cost</td><td></td><td id='totalCost'>" + givenRecipe.EDCost + "</td></tr>";
+		tableHTML += "</table>"
+		
+		
+		
+		//Remove any existing tables, then append the created table to the active div
+		for(i = 0; i < tableList.length; i++)
+		{
+			tableList[i].parentNode.removeChild(tableList[i]);
+		}
+		
+		for(i = 0; i < containerList.length; i++)
+		{
+			if(containerList[i].style.display != "none")
+				containerList[i].innerHTML += tableHTML;
+		}
+		
+		setListeners();
+	}
+	
+	function setListeners()
+	{
+		var inputList = document.getElementsByTagName("input");
+		var i;
+		
+		for(i = 0; i < inputList.length; i++)
+		{
+			if(inputList[i].type == "text")
+			{
+				inputList[i].addEventListener("blur", calcPrice);
+			}
+		}
+	}
+	
+	function calcPrice()
+	{
+		var baseCost = parseInt(givenRecipe.EDCost);
+		var crystalCost = parseInt(document.getElementById("crystalPrice").value);
+		var elixirCost = parseInt(document.getElementById("elixirPrice").value);
+		var finalCost;
+		
+		var ingred1Cost = 0;
+		var ingred2Cost = 0;
+		var ingred1Holder = document.getElementById("ingredPrice1");
+		var ingred2Holder = document.getElementById("ingredPrice2");
+		if(ingred1Holder != null)
+		{
+			ingred1Cost = ingred1Holder.value;
+			ingred1Cost = parseInt(ingred1Cost);
+		}
+		if(ingred2Holder != null)
+		{
+			ingred2Cost = ingred2Holder.value;
+			ingred2Cost = parseInt(ingred2Cost);
+		}
+		
+		finalCost = baseCost;
+		finalCost += (crystalCost * givenRecipe.crystals);
+		finalCost += (elixirCost * givenRecipe.elixirCount);
+		finalCost += (ingred1Cost * givenRecipe.count1);
+		finalCost += (ingred2Cost * givenRecipe.count2);
+		
+		document.getElementById("totalCost").innerHTML = finalCost;
+	}
+	</script>
+</body>
+</html>
