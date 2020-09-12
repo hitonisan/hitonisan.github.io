@@ -24,6 +24,11 @@ h3 {
 	font-size: 1.25rem;
 }
 
+h3:before, section:after {
+	content:"\A";
+	white-space: pre;
+}
+
 img {
 	clear: both;
 	display: block;
@@ -62,11 +67,6 @@ nav a:hover {
 p {
 	display: table;
 	font-size: 1rem;
-}
-
-section:after {
-	content:"\A";
-	white-space: pre;
 }
 
 .clearfix::after {
