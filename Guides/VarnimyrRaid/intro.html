@@ -482,7 +482,7 @@ document.getElementById("calcButton").addEventListener("click", toggleCalcDiv);
 function toggleCalcDiv () {
 	var targetDiv = document.getElementById("calcDiv");
 	console.log(targetDiv.style.display);
-	if (targetDiv.style.display == "none") {
+	if (targetDiv.style.display != "block") {
 		targetDiv.style.display = "block";
 	} else {
 		targetDiv.style.display = "none";
