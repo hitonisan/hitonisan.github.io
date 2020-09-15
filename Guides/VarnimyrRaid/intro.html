@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Varnimyr Raid Introduction</title>
+	<meta charset="UTF-8">
+	<meta name="author" content="Hitotsuoboe">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="varniRaidStyle.css">
+</head>
+<body>
+<header>
+	<nav class="clearfix">
+		<a href="#" id="currentLink">Introduction</a>
+		<a href="12-5.html">Crimson Tower</a>
+		<a href="12-6.html">Never-Ending Darkness</a>
+		<a href="12-7.html">Crimson Cradle</a>
+		<a href="notes.html">Notes</a>
+	</nav>
+</header>
+<main>
+<section>
+<h1>The Varnimyr Raids</h1>
+
+<p>The Varnimyr Raids present the opportunity to consistently obtain valuable Mystic Stones, get some powerful titles, and even have their own exclusive, powerful accessories and weapons. However, players have to not only have their equipment as ready as possible for the Raids, but also know what to do. Most of the Raid battles will only go smoothly if everyone is cooperating and no one makes a crucial mistake.</p>
+
+<p>Thus, I wanted to present this guide to everyone. I have three main goals with this guide to help players prepare themselves for the Varnimyr Raids:<p>
+
+<ol>
+	<li>Understand boss mechanics, attacks, and features</li>
+	<li>Showcase mechanics and attacks via gameplay examples</li>
+	<li>Explain common strategies used by groups in actual Raids</li>
+</ol>
+
+<p>Team strategies are probably the aspect of this guide I want to push forward the most. Many people can learn a lot about the Raids just by going through Story mode, but those can be done with just one or two people - it usually doesn't compare to the full experience and techniques found in a full group of 8. (Plus, Story mode has some small differences compared to Normal Raids other than stats.) Discussing common strategies here will let newer players get settled into Normal Raids much more quickly, causing fewer problems for groups and letting newer players be accepted more easily into Raid groups.</p>
+
+<p>So, shall we get to it?</p>
+</section>
+
+
+
+
+
+<section>
+<h2>General Mechanics, Information, and Preparation</h2>
+
+
+<p>Some aspects of the Varnimyr Raids repeat themselves through the three Raids, and players should be aware of the following before going in.</p>
+
+
+
+
+
+
+
+<h3>The Demon Realm Debuff</h3>
+
+
+<p>The Demon Realm debuff found in Varnimyr is stronger in the Varnimyr Raids than it is in the other Varnimyr dungeons. While other Varnimyr dungeons have the debuff reduce player attack and HP by up to 30%, in the Varnimyr Raids, <span style="font-weight: bold;">attack and HP are reduced by 50%</span>.</p>
+
+<p>This severely limits players' offensive power, meaning some people may need more force than they would expect to surpass the Raids - this is vital, since the following Raids all have sections that require players to do enough damage within a time limit in order to pass them.</p>
+
+<p>Sources of the Adaptation stat will help give you more of a fighting chance. Each instance of Adaptation will directly decrease the power of the Demon Realm debuff at a 1:1 ratio. If you have multiple sources giving you Adaptation, they will stack additively.</p>
+
+<p>For example, if you went into 12-8 (30% debuff) with 20000 attack, you would end up with <br />
+20000 * (1 - 30%) = 20000 * (1 - .3) = 20000 * 0.7 = 14000 attack.</p>
+
+<p>If you had 3% Adaptation from an Adaptation elixir, the debuff would be (30% - 3%) = 27%, and your attack would be <br />
+20000 * 0.73 = 14600 attack.</p>
+
+<p>If you had 2% Adaptation from a title while also having the Adaptation elixir active, the debuff would be (30% - 3% - 2%) = 25%, making your attack <br />
+20000 * 0.75 = 15000.</p>
+
+
+
+<p>Note that Adaptation has the same level of effect no matter where it is used. <span style="font-weight: bold;">The claim that Adaptation is 2.3x effective in Raid is false</span>. Video proof of this <a href="https://youtu.be/rYzgS-O-dq4" target="_blank">can be found here</a>.</p>
+
+<p>Calculations showcasing the problem are in the spoiler below. Note that all the calculations that treat Adaptation as normally effective result in numbers very close to the in-game results, while calculations that assumed Adaptation was 2.3x effective result in numbers that overshoot tremendously.</p>
+
+<button type="button" id="calcButton">Show/Hide Calculations</button>
+
+<div id="calcDiv">
+<p>Base Physical Attack: 1266 <br />
+^Z: 2621</p>
+
+<p>Attack with 4 SI accessories: 1532 <br />
+^Z: 3173</p>
+
+<p>==============</p>
+
+<p>12-1: 10% debuff <br />
+2621 * .9 = 2358.9</p>
+
+<p>^Z, Chaos Circle, no Adapt: 1228<br />
+Damage lost to defense: 2358.9 - 1228 = 1130.9<br />
+1130.9 / 2358.9 = 0.479418 -> 47.9418% physical defense</p>
+
+<p>^Z, Chaos Circle, 2% Adapt from Raid buff: 1255<br />
+1255 / (1 - .479418) = 1255 / .520581 = 2410.767969<br />
+2621 * .92 = 2411.32<br />
+2% flat debuff reduction</p>
+
+<p>^Z, Chaos Circle, 2% Adapt from Fire Tamer: 1255<br />
+(see above calculations)</p>
+
+<p>^Z, Chaos Circle, 4% Adapt with 4 Corrupt SI accessories: 1552<br />
+1552 / .520581 = 2981.284373<br />
+3173 * .94 = 2982.62</p>
+
+<p>^Z, Chaos Circle, 6% Adapt with 4 Corrupt SI + Fire Tamer: 1585<br />
+1585 / .520581 = 3044.675084<br />
+3173 * .96 = 3046.08</p>
+
+<p>^Z, Chaos Circle, 3% Adapt with elixir: 1269<br />
+1269 / .520581 = 2437.660998<br />
+2621 * .93 = 2437.53</p>
+
+<p>^Z, Chaos Circle, 9% Adapt (4 Corrupt SI, Fire Tamer, Adapt elixir): 1635<br />
+1635 / .520581 = 3140.721617<br />
+3173 * .99 = 3141.27</p>
+
+<p>=================</p>
+
+<p>12-5: 50% debuff<br />
+Adaptation supposedly 2.3x effective</p>
+
+<p>^Z (no Adapt): 682<br />
+47.9588% physical defense</p>
+
+<p>^Z (Adapt Elixir, 3%): 723<br />
+723 / (1 - .479588) -> 723 / 0.520412 = 1389.283875<br />
+3 * 2.3 = 6.9% in Raid<br />
+2621 * .569 = 1491.349<br />
+2621 * .53 = 1389.13</p>
+
+<p>^Z (Fire Tamer, 2%): 709<br />
+709 / 0.520412 = 1362.382112<br />
+2 * 2.3 = 4.6% in Raid<br />
+2621 * .546 = 1431.066<br />
+2621 * .52 = 1362.92</p>
+
+<p>^Z (4 SI accessories, 4%): 891<br />
+891 / 0.520412 = 1712.105024<br />
+4 * 2.3 = 9.2% in Raid<br />
+3173 * .592 = 1878.416<br />
+3173 * .54 = 1713.42</p>
+
+<p>^Z (Fire Tamer, Elixir, 5%): 750<br />
+750 / .520412 = 1441.165846<br />
+5 * 2.3 = 11.5% in Raid<br />
+2621 * .615 = 1611.915<br />
+2621 * .55 = 1441.55</p>
+
+<p>^Z (Elixir, 4 SI accessories, 7%): 941<br />
+941 / .520412 = 1808.182748<br />
+7 * 2.3 = 16.1% in Raid<br />
+3173 * .661 = 2097.353<br />
+3173 * .57 = 1808.61</p>
+
+<p>^Z (Elixir, 4 SI accessories, Fire Tamer, 9%): 974<br />
+974 / .520412 = 1871.594045<br />
+9 * 2.3 = 20.7% in Raid<br />
+3173 * .707 = 2243.311<br />
+3173 * .59 = 1872.07</p></div>
+
+
+
+<p>Having your HP halved will notably affect your survivability, but this can slightly be turned in your favor. While many late-game consumables restore a percentage of your maximum health, regional craftable consumables (from alchemist NPCs) heal a fixed amount of HP. Since your HP is halved in Varnimyr Raids, this often means an Elrianode or Varnimyr food item can restore 75% or more of your maximum health, with the food item itself being very inexpensive to make.</p>
+
+<ul class="imgContain">
+	<li><img src="https://elwiki.net/wiki/images/c/cc/Over-Cooked_Vegetables.png" alt="Over-cooked Vegetables" width="64" height="64"></li>
+	<li><img src="https://elwiki.net/wiki/images/6/68/Flame_Grass_Salad.png" alt="Flame Grass Salad" width="64" height="64"></li>
+</ul>
+
+<p>Having a stockpile of these food items (I personally prefer the Overcooked Vegetables from Elrianode) will let you heal many of the wounds you'll receive in Raid fights at very little cost.</p>
+
+
+
+
+
+
+
+
+
+<h3>Shared Traits</h3>
+
+
+<p>Many of the Varnimyr Raid bosses (and most things they summon in their fights) have common characteristics to keep in mind.</p>
+
+<p>Every Varnimyr Raid (on Normal difficulty, but not Story difficulty) has restrictions on resurrection stone use. They are as follows:</p>
+<ol>
+	<li>You are limited to 3 resurrection stones per attempt.</li>
+	<li>You cannot use resurrection stones manually. If you die, you will automatically resurrect using a resurrection stone (if you have one) after a short wait.</li>
+	<li>Since you cannot manually use resurrection stones, you are not able to revive other players.</li>
+	<li>If, at any point in time, every player is dead, the party fails the Raid. <span style="font-weight: bold;">This occurs even if players still have resurrection stones left</span>.</li>
+	<li>If a player is dead when the current phase is cleared and that player still has resurrection stones, that player will automatically resurrect (ignoring whatever was left on the wait timer).</li>
+</ol>
+
+<p>Raids with 8 players in them can have a significant effect on your framerate. It is recommended that you turn all your graphical options in-game down to their lowest settings... <span style="font-weight: bold;">except for effects. Ensure that your "Effect" graphic option is no lower than Medium</span> - if you have your "Effect" graphics set to low, many indicators of boss attacks (as well as some of the attacks themselves) will be completely invisible.</p>
+
+<p>Almost all of the entities in the Varnimyr Raids have super armor, cannot be launched, and will not be displaced by black hole effects. The only exception to this rule are the orbs summoned during the 2nd phase of 12-5 (Crimson Tower), which can be pushed and influenced by black holes.</p>
+
+<p>Almost all of the entities in Varnimyr Raids are susceptible to debuffs, including element-based debuffs. (However, they have relatively high elemental resistances, so their effectiveness will be limited.) However, this is not constant: some of the Varnimyr Raid bosses will glow pink during some of their moves - <span style="font-weight: bold;">a pink outline indicates that the boss is immune to debuffs at that time</span>. If you have moves or items that inflict debuffs, time their uses accordingly in order to not waste them.</p>
+
+<p>Some attacks used by Varnimyr bosses are unique in the fact that they can ignore most forms of invulnerability frames (I-frames) gained from using special actives, awakening, and some other sources. Most of these attacks come with very clear warnings, though - respect these attacks when you see them. In this guide, moves will be listed in a <span style="color: red;">different color</span> if they ignore most I-frames. There is one type of I-frames that is an exception to this, which will be explained in the next section.</p>
+
+<p>A large number of the bosses in Varnimyr Raids have attacks and traits that they can only use after losing a certain amount of health, or after entering certain modes. Paying attention to the boss' health will let you monitor what threats the boss has access to, and how you should react.</p>
+</section>
+
+
+
+
+
+
+
+
+<section>
+<h2>Preparations</h2>
+
+
+<p>It's important that you bring everything you can that will give you the best chance of succeeding. Naturally, this means equipping your strongest PvE equipment, but there are some items and titles to focus on in particular.</p>
+
+<p>The following aren't technically necessary, but provide many things that help you survive the battles and contribute more to a Raid group's effort. Consider what you can do with the following based on which of these you have (or don't have), and how reasonable they would be to acquire.</p>
+
+<ul class="imgContain">
+	<li><img src="https://elwiki.net/wiki/images/1/1d/Shining_Stone_of_Hunt.png" alt="Shining Magic Stone of Pursuit" width="64" height="64"></li>
+	<li><img src="https://elwiki.net/wiki/images/e/ea/Head_Hunter.png" alt="Head Hunter" width="54" height="54"></li>
+</ul>
+
+<p><span style="font-weight: bold;">Magic Stones of Pursuit, Head Hunter</span> - most of the damage you will do in the Varnimyr Raids is against bosses (with 12-6 having the most notable exceptions). As a result, bringing sources of boss damage, such as the Head Hunter force passive or having boss damage socketed via Pursuit Magic Stones (craftable via Heroic Dungeon materials with Glave) will drastically increase your damage output in these Raids.</p>
+
+<img src="https://elwiki.net/wiki/images/9/9b/VarnimyrTitle5.png" alt="Key to Victory" width="105" height="70">
+
+<p><span style="font-weight: bold;">Key to Victory</span> - if you need to get a damage title for Raid, try to aim for this one. Every single aspect of this title - Adaptation, boss damage, and item recovery - will come into play immensely during your Varnimyr Raid attempts. Plus, this title only requires 50 runs of 12-3 to unlock (once revealed), making it fairly accessible.</p>
+
+<img src="https://elwiki.net/wiki/images/1/1f/SecretBarrierGuardian.png" alt="Guardian of Secret Closed Space" width="105" height="70">
+
+<p><span style="font-weight: bold;">Guardian of Secret Closed Space</span> - an alternative source of boss damage, and the Fever effect can be a temporary boon to the entire group. Having this title will also save you immense amounts of time if you decide to pursue some of the later Raid titles (such as needing 300 clears of 12-5 to get its second title).</p>
+
+<ul class="imgContain">
+	<li><img src="https://elwiki.net/wiki/images/f/fd/10-6Title5.png" alt="Eclipse" width="105" height="70"></li>
+	<li><img src="https://elwiki.net/wiki/images/0/01/VarnimyrTitle4.png" alt="Forginay's Fruit" width="105" height-"70"></li>
+</ul>
+
+<p><span style="font-weight: bold;">Eclipse, Forginay's Fruit</span> - people make mistakes, and there are a large number of situations where it is fairly easy to die. Having either of these titles can prove invaluable via their revival effects - the I-frames provided by these revival effects is the only kind that the Varnimyr bosses cannot ignore, giving you a second chance.</p>
+
+<p>Note that, if you have it, Eclipse is NOT strictly superior in every Varnimyr Raid fight to Forginay's Fruit, largely due to the instant-kill attack in phase 2 of 12-5. (Eclipse can trigger super armor on the part of the move you need to get hit by in order to survive the attack - if this happens, you'll get trapped in the attack instead) If you have Eclipse, be careful where you're using it.</p>
+
+<img src="https://elwiki.net/wiki/images/e/ec/UsurperOfTwistedTimeAndSpace.png" alt="Usurper of Time and Space" width="105" height="70">
+
+<p><span style="font-weight: bold;">Usurper of Twisted Time and Space</span> - if your equipment doesn't let you do as much damage as others in Varnimyr Raids, having the Usurper title is incredibly valuable. The Ruin debuff provided by this title can take 0.2% of the target's max HP or 50,000,000 HP (whichever is lower) per tick for 5 seconds - if you use this against the main bodies of many of the Varnimyr bosses, you will be inflicting the equivalent of 40-50 million damage per tick with the debuff. Pair that with the 5 seconds to inflict and refresh the debuff, and you could be looking at 360-450 million HP per 20-second buff cycle.</p>
+
+<p>If you use this title, keep in mind that the Ruin debuff won't stack with other instances of itself - multiple people using Usurper could make the title less effective if the players have their debuffs synced. This can be avoided by talking with your party beforehand, and making sure your buff cycles aren't synchronized, letting the party inflict Ruin debuffs on the bosses for as long as possible.</p>
+
+<img src="https://i.imgur.com/HwU9THr.png" alt="Raid Party's Resolve" width="32" height="25">
+
+<p><span style="font-weight: bold;">Other Adaptation sources/titles</span> - staying in the Crimson Edge area for six minutes will grant you the Raid Party's Resolve buff, which provides 2% boss damage, 2% less damage taken from bosses, and 2% Adaptation. It's a very welcomed boost, and might be worth waiting to get. You can also buy the buff from the Spirit in Crimson Edge for 500,000 ED if you cannot wait.</p>
+
+<ul class="imgContain">
+	<li><img src="https://elwiki.net/wiki/images/7/78/BD12-3.png" alt="Nightmare Blindfold" width="64" height="64"></li>
+	<li><img src="https://i.imgur.com/TyrUKMr.png" alt="Agate Fragment" width="64" height="64"></li>
+</ul>
+
+<p>Though difficult to obtain, some Varnimyr accessories like the Nightmare Blindfold from 12-3 and the Agate Fragment from 12-8 provide additional sources of Adaptation to recover your stats with.</p>
+
+<ul class="imgContain">
+	<li><img src="https://elwiki.net/wiki/images/e/e3/VarnimyrTitle15.png" alt="Drifter" width="105" height="70"></li>
+	<li><img src="https://elwiki.net/wiki/images/b/be/VarnimyrTitle8.png" alt="Corrupt Identity" width="105" height="70"></li>
+</ul>
+
+<p>Besides Key to Victory, several other titles in Varnimyr do provide Adaptation (such as Drifter from 12-8, and Corrupt Identity from 12-4). However, excluding the Grim Gaze title (which requires you to clear the 12-6 Raid many times to access it), Key to Victory still holds one of the best stat sets for Varnimyr Raids among Adaptation titles, and is easier to obtain than Drifter or Corrupt Identity.</p>
+
+<img src="https://elwiki.net/wiki/images/6/6b/VarnimyrTitle9.png" alt="Fire Tamer" width="105" height="70">
+
+You will get the Fire Tamer title if you clear the 12-5 Raid one time - this makes it somewhat reasonable to access if you desperately need a title for the later Raids. However, better options exist - this should only be a temporary title at best.
+
+<ul class="imgContain">
+	<li><img src="https://elwiki.net/wiki/images/3/39/10-6Title4.png" alt="Resistant to Destiny" width="105" height="70"></li>
+	<li><img src="https://elwiki.net/wiki/images/7/74/TITLE_890.png" alt="Passion Pay" width="105" height="70"></li>
+	<li><img src="https://elwiki.net/wiki/images/0/07/PierceTheHeavens.png" alt="Pierce the Heavens" width="105" height="70"></li>
+</ul>
+
+<p><span style="font-weight: bold;">Attack-Increasing Titles</span> - depending on the strength of your title and what other Adaptation sources you have, a boost in attack power from a title might outweigh Adaptation in value.</p>
+
+<p>For example, let's say a person with 25000 attack considers Resistant to Destiny (+5% for both attack powers) against a 2% Adaptation title. (Assume no other Adaptation sources are involved)</p>
+
+<p>Resistant to Destiny:<br />
+25000 * 1.05 = 26250 (attack increase) <br />
+26250 * .5 = 13125 (debuff applied)</p>
+
+<p>2% Adaptation <br />
+Debuff strength: 50% - 2% = 48%<br />
+25000 * (1 - .48) = 25000 * .52 = 13000</p>
+
+<p>Thus, Resistant to Destiny would provide this individual with more attack power. If you have such a title (and don't have Key to Victory, which would be used anyways because of its boss damage; or are in a part of the Raid where boss damage isn't important), it may be worth taking a few moments to calculate whether or not the attack increase from a title would be worth your while.</p>
+
+<img src="https://elwiki.net/wiki/images/3/32/Drain.png" alt="Drain" width="54" height="54">
+
+<p><span style="font-weight: bold;">Drain</span> - this Force Active has a specialized use that can help the party in 12-6. While its use isn't necessary, having it (even at its most common rarity) can certainly make things simpler for the Raid group. It can be commonly found on the market board for reasonable prices - if you plan to do Varnimyr Raid frequently, this Force Active can be worth the investment.</p>
+</section>
+
+
+
+<section>
+<p>Lastly, be sure to do some practice in the Story versions of the Raids before attempting to do the real ones, since this will let you know what attacks do - this is something you'll need to know in the clutter of eight players and possibly a very low framerate. However, <span style="font-weight: bold;">Story mode is not enough to guarantee success in Normal Raids</span> - no amount of solo or duo Story practice will suffice the experience of executing strategies with groups of eight in the real thing.</p>
+
+<p>Be ready for mistakes, and don't get upset by them - just figure out what went wrong, and learn from it. That's how we progress, after all~.</p>
+</section>
+
+
+
+
+
+<section>
+<h2>Rewards</h2>
+
+
+<p>Going through the Varnimyr Raids is not without its chances at valuable and powerful rewards. This section will explain both what possible rewards you can get from clearing Varnimyr Raids, as well as the restrictions on them.</p>
+
+
+
+
+<h3>First Clear Rewards</h3>
+
+
+<p>Upon defeat, each phase of a Varnimyr Raid in Normal mode will drop Mystic Stones for each person in the Raid <span style="font-weight: bold;">who has not cleared that phase yet</span>. The kinds of stones that will drop depend on which Raid you are in, but can range from colored Refined and Shining stones up to Giant Shining stones, making the Raids very valuable sources of stones for Mystic Enchants. Note that this will only happen the first time you clear the phase in a given week - if you beat that Raid phase again later on, no Mystic Stones will drop under normal circumstances. (We'll get to the exception in a few moments.)</p>
+
+<p>Additionally, upon defeat in Normal mode, the last phase of each of the Varnimyr Raid bosses has a very small chance of dropping a Legendary equipment cube instead of a Mystic Stone. Every piece of Legendary equipment has very unique effects and can prove to be very powerful under the right conditions. While the Legendary equipment cannot be traded, the cube can be bank shared if you want to give the item to another character. There is a single Legendary accessory each of the three final phases in the three Raids can drop; the final phase (in Story or Normal mode) of Crimson Cradle may also drop the Demonic Weapon cube, containing the strongest weapon currently available in the game. Note that these drops can only occur as first clear rewards - <span style="font-weight: bold;">they will never drop on repeat attempts</span>.</p>
+
+<p>After exiting the Raid, you will be able to receive Raid cubes for each of the phases you cleared for the first time. There are separate cubes for Story and Normal mode, and you can complete both versions of the Raid for both sets of reward cubes. Accepting these cubes increases the chance of the Demonic Weapon cube dropping the next time you clear the final phase of Crimson Cradle. Every one of these cubes also contains a Mystic Stone, the quality of which depends on the Raid Cube it came from.</p>
+
+<p>Normally, once you complete a phase in the Varnimyr Raids for the first time, you cannot get rewards again from that phase until the next week, once the server time reaches Wednesday at 12:00 AM (Pacific Standard Time). However, you do have a way to reset your rewards early.</p>
+
+<img src="https://elwiki.net/wiki/images/f/f2/CrimsonTicket.png" alt="Crimson Trace Reset Ticket" width="64" height="64">
+
+<p>If you acquire and use a <span style="font-weight: bold;">Crimson Trace Reset Ticket</span>, you will be able to obtain first clear rewards (inclusive of drops from bosses in the Raids, as well as the Raid Cube rewards) again from the difficulty of your choice. This can present a valuable opportunity to gather more Mystic Stones and get another chance at the Legendary equipment drops. But be warned: obtaining a Reset Ticket is very difficult, and Reset Tickets can only be used twice per Raid week. If you plan on using a Reset Ticket, ensure that you make the most of it and do everything in your power to clear all three Raids completely.</p>
+
+<p>Crimson Reset Tickets are a <span style="font-weight: bold;">very</span> rare drop from Shadow Vein. Alternatively, they can be obtained via the Flame Mark system, which provides players who have already cleared Varnimyr Raids a way to get additional rewards.</p>
+
+
+
+
+
+<h3>Flame Marks</h3>
+
+<p>Flame Marks can only be obtained under the following conditions:</p>
+<ol>
+	<li>You are playing a phase of a Varnimyr Raid you have already received "first clear" rewards for in Normal mode.</li>
+	<li>At least one other player in your Raid party has not cleared that Raid phase this week (or has used a Reset Ticket, and hasn't gotten "first clear" rewards from the phase after resetting).</li>
+</ol>
+
+<p>If these conditions are met, upon clearing a Varnimyr Raid phase, each person who has already beaten that phase will receive Flame Marks. The quantity they receive is based on the Raid phase that was completed, as well as how many other players in the party had not yet cleared the phase (or had reset). The quantities are as follows:</p>
+
+<table>
+<tr>
+	<th>Raid Phase</th>
+	<th>Marks Per "First Clear" Player</th>
+</tr>
+<tr>
+	<td>12-5: Remnants of the Crimson Calamity</td>
+	<td>1 per player</td>
+</tr>
+<tr>
+	<td>12-5: The Crimson Soul</td>
+	<td>1 per player</td>
+</tr>
+<tr>
+	<td>12-5: The Crimson Calamity</td>
+	<td>2 per player</td>
+</tr>
+<tr>
+	<td>12-6: The Thorn Field</td>
+	<td>1 per player</td>
+</tr>
+<tr>
+	<td>12-6: The Observers</td>
+	<td>1 per player</td>
+</tr>
+<tr>
+	<td>12-6: The Crimson Eye</td>
+	<td>4 per player</td>
+</tr>
+<tr>
+	<td>12-7: Malice</td>
+	<td>2 per player</td>
+</tr>
+<tr>
+	<td>12-7: The Recluse</td>
+	<td>2 per player</td>
+</tr>
+<tr>
+	<td>12-7: The Dark Recluse</td>
+	<td>6 per player</td></tr>
+</table>
+<br />
+
+<p>If you gather enough Flame Marks, you can bring them to the Elrianode Alchemist to exchange them for consumables, Adaptation Elixirs, or the following:</p>
+
+<img src="https://elwiki.net/wiki/images/0/03/Varnimyr_Raid_Cube_2.png" alt="Crimson Calamity Cube" width="64" height="64">
+
+<p><span style="font-weight: bold;">Crimson Calamity Cube</span> - requires 20 Flame Marks. Primarily contains colored Shining mystic stones, with occasional Giant Common stones, and very rarely Giant Refined stones.</p>
+
+<img src="https://elwiki.net/wiki/images/9/97/Varnimyr_Raid_Cube_4.png" alt="Crimson Eye Cube" width="64" height="64">
+
+<p><span style="font-weight: bold;">Crimson Eye Cube</span> - requires 30 Flame Marks. Contains primarily Shining colored Mystic Stones, and occasional Giant Common/Refined stones; Giant Shining stones are possible but very rare.</p>
+
+<img src="https://elwiki.net/wiki/images/c/c1/Varnimyr_Raid_Cube_6.png" alt="Dark Recluse Cube" width="64" height="64">
+
+<p><span style="font-weight: bold;">Dark Recluse Cube</span> - requires 100 Flame Marks. Has high odds of containing Giant Refined/Shining stones; will contain Shining colored Mystic Stones otherwise.</p>
+
+<img src="https://elwiki.net/wiki/images/f/f2/CrimsonTicket.png" alt="Crimson Trace Reset Ticket" width="64" height="64">
+
+<p><span style="font-weight: bold;">Crimson Trace Reset Ticket</span> - requires 500 Flame Marks. Given the extremely low drop rate of the Ticket in Shadow Vein, this becomes the most consistent way of obtaining a Reset Ticket without buying it from another player.</p>
+
+
+
+
+<h3>Legendary Equipment</h3>
+
+
+<p>If you are fortunate, you may gain the right to use the Varnimyr Raids' legendary accessories or the Demonic Weapon. This section will briefly describe each drop, as well as what finer details I know about them.</p>
+
+<img src="https://elwiki.net/wiki/images/e/ed/12-5drop.png" alt="Undying Flame" width="64" height="64">
+
+<p><span style="font-weight: bold;">Undying Flame</span> - bottom piece accessory. All speeds increase by 5%. Enemies within a moderate radius of you will receive HP burn equal to 2% of your attack power each second. This effect stacks up to 20% of your attack power if enemies remain in range.</p>
+<ul>
+	<li>Note that this is HP burn, not damage. As a result, damage from the Undying Flame will not give awakening or MP to the Flame's user, or to any of its targets.</li>
+	<li>The HP burn will affect anything in range, and <span style="font-weight: bold;">ignores I-frames</span>. There is no limit to how many enemies the Undying Flame can target at the same time.</li>
+	<li>The HP burn will increase according to any effects that boost the user's attack power, such as those from awakening.</li>
+	<li>In dungeons, the HP burn effect on the Undying Flame is negligible - in the end, 20% attack power is next to nothing compared to the thousands of % damage you'll be constantly dealing to mobs. In PvP, however, this can put on some added pressure on your opponent's health, and can be a worthwhile tool to bring with you.</li>
+</ul>
+
+<img src="https://elwiki.net/wiki/images/6/67/12-6Drop.png" alt="Demonic Eye" width="64" height="64">
+
+<p><span style="font-weight: bold;">Demonic Eye</span> - support unit accessory. Critical damage increases by 5% (additive). Once every 30 seconds, when you awaken, every enemy within a moderate radius of you will receive a 10% decrease in attack speed for 15 seconds. In dungeons, enemies will also receive a 10% decrease in physical and magical defense.</p>
+
+<img src="https://elwiki.net/wiki/images/8/89/12-7Drop.png" alt="Inferno's Mark" width="64" height="64">
+
+<p><span style="font-weight: bold;">Inferno's Mark</span> - weapon accessory. All skill damage increases by 10% (additive, excludes hyperactive). Enemies hit by your command attacks or actives will lose 15 elemental resistance to all elements for 10 seconds. This effect stacks up to 10 times, up to -150 resistance.</p>
+<ul>
+	<li>The debuff used by the Inferno's Mark is different from the one used by Shadow's Descent; as a result, both effects can be active simultaneously (meaning a target's resistances could be reduced by 150 + 100 = 250).</li>
+</ul>
+
+<img src="https://elwiki.net/wiki/images/3/3a/Varnimyr_Raid_Weapon_Cube.png" alt="Demonic Weapon Cube" width="64" height="64">
+
+<p><span style="font-weight: bold;">Flames of Judgment - Demonic Weapon Cube</span> - when opened, contains the Demonic Weapon for the character that opens it.</p>
+<ul>
+	<li>The Demonic Weapon has slightly higher base stats than the Void weapon, but has the potential to greatly exceed the Void weapon by having access to 4 more of each colored Mystic Stone slot, and 2 more Giant Stone slots, once it reaches +9 or higher.</li>
+	<li>For more information on the Demonic Weapon, see the Elwiki page on the weapon <a href="https://elwiki.net/w/Flames_of_Judgement_-_Demonic_Weapon" target="_blank">here</a>.</li>
+</ul>
+
+
+
+<h3>Blazing Crystals</h3>
+
+<p>Even if you don't get good luck with the Legendary drops, you aren't permanently denied access to them.</p>
+
+<img src="https://elwiki.net/wiki/images/1/13/FlameCrystal.png" alt="Blazing Crystal" width="64" height="64">
+
+<p>If you are in a Crimson Cradle group that defeats the final phase of the Raid, and someone in the party obtains the Demonic Weapon Cube, every other person in the Raid will obtain a Blazing Crystal. You will also obtain 5 Blazing Crystals if you dismantle the Demonic Weapon, and 1 Blazing Crystal if you dismantle a Varnimyr Raid accessory.</p>
+
+<p>If you have Blazing Crystals, you can bring them to the Elrianode Alchemist to exchange them for a variety of items. Most notable, however, are the chances to obtain the Legendary Raid items through these Crystals:</p>
+<ul>
+	<li>5 Blazing Crystals: Undying Flame Cube</li>
+	<li>5 Blazing Crystals: Demonic Eye Cube</li>
+	<li>5 Blazing Crystals: Inferno's Mark Cube</li>
+	<li>20 Blazing Crystals: Demonic Weapon Cube</li>
+</ul>
+
+<p>Blazing Crystals are very difficult to obtain in their own right, but if you can keep helping with Crimson Cradle clears, you may not need to rely on luck to get Legendary equipment.</p>
+</section>
+
+<p>I wish you the best of luck and ability in fighting through the Raids and acquiring these powerful pieces of equipment. I hope that the information that follows will help you in the battles to come.</p>
+
+</main>
+<footer>
+
+</footer>
+<script>
+"use strict";
+document.getElementById("calcButton").addEventListener("click", toggleCalcDiv);
+
+function toggleCalcDiv () {
+	var targetDiv = document.getElementById("calcDiv");
+	console.log(targetDiv.style.display);
+	if (targetDiv.style.display == "none") {
+		targetDiv.style.display = "block";
+	} else {
+		targetDiv.style.display = "none";
+	}
+}
+</script>
+</body>
+</html>
