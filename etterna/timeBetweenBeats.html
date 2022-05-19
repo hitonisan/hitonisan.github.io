@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Time Between Beats Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="author" content="Hitonisan">
+  <link rel="stylesheet" type="text/css" href="betweenBeatCalcStyle.css">
+</head>
+
+<body>
+<nav>
+  <ul>
+    <li class="dropdown">
+      <span class="dropSpan">Calculators</span>
+	  <div class="dropdown-content">
+	    <a id="currentLink" href="#">Time Between Beats</a>
+	  </div>
+    </li>
+    <li><a href="etternaLinks.html">Useful Links</a></li>
+    <li class="returnLink"><a href="etternaLanding.html">Main Etterna Page</a></li>
+  </ul>
+</nav>
+<section>
+  <h2>Time Between Beats Calculator</h2>
+  <p>Provide a BPM and beat snap below, and the calculator will determine the time between two notes at that BPM and quantization.</p>
+  <form>
+    <label for="BPMVal">Enter a positive BPM: </label>
+    <input type="number" id="BPMVal" name="BPMVal" min="0.000001" step="0.000001" value="120" required="required"><br />
+    <label for="beatSnaps">Select the beat snap to use: </label>
+    <select id="beatSnaps" name="beatSnaps" required="required">
+      <option value="4" selected="selected">4ths</option>
+      <option value="8">8ths</option>
+      <option value="12">12ths</option>
+      <option value="16">16ths</option>
+      <option value="20">20ths</option>
+      <option value="24">24ths</option>
+      <option value="32">32nds</option>
+      <option value="48">48ths</option>
+      <option value="64">64ths</option>
+      <option value="96">96ths</option>
+      <option value="192">192nds</option>
+    </select>
+    <button type="button" onclick="calcTime()">Calculate</button>
+  </form>
+  <p id="resultText">Results will appear here.</p>
+</section>
+<section>
+  <h2>Explanation</h2>
+  <p>As seconds are the most meaningful measurement of time when charting, the BPM is divided by 60 seconds to get beats per second.</p>
+  
+  <p>A common arrangement for song rhythm focuses on having 4 main beats per song measure, or 4:4 time. In Stepmania charting, 4th notes directly corresponding to these timing points, and divide the song measure into 4 parts of equal size. We will thus refer to them as 1:1 beats to reflect this association.</p>
+  
+  <p>Say 4th note beat snaps are not of interest - some other snap like 24ths is. First, note that 1:1 beats could identically be said to be 1:(4/4) beats. Next, we know that 24th beat snap will equally divide a song measure into 24 equally sized parts. This is 6 times as many parts as 4th notes, and the distance between each snap is 1/6 of a 1:1 beat. We are thus converting to 1:(24/4), or 1:6, beats, and need to multiply the total number of beats by six.</p>
+  
+  <p>So, in general, this process will (if necessary) convert from 4th notes (1:1 beats) to Xth notes (1:(X/4)) beats. The total number of relevant beats is multiplied by (X/4).</p>
+  
+  <p>At this point, we will have a fraction representing the number of Xth notes that occur in 60 seconds. As our goal is the number of seconds between two Xth notes, we invert this fraction by raising it to the -1 power.</p>
+  
+  <p>Resolving the resulting fraction leaves us with the target number of seconds per Xth note.</p>
+  
+  <p>In explicit fractions, with a BPM of b: <span class="fraction"><span>b 1:1 beats</span> <span class="bottom">1 minute</span></span>
+  * <span class="fraction"><span>1 minute</span> <span class="bottom">60 seconds</span></span> 
+  * <span class="fraction"><span>X 1:(X/4) beats</span> <span class="bottom">1 1:1 beat</span></span></p>
+  <p>Then, (<span class="fraction"><span>bX 1:(X/4) beats</span> <span class="bottom">60 seconds</span></span>)<sup>-1</sup> is resolved.</p>
+</section>
+
+<script src="betweenBeatCalcMethods.js"></script>
+</body>
+</html>
