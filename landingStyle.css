@@ -1,0 +1,96 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-family: "Verdana, Helvetica, sans-serif";
+	font-size: 16px;
+}
+
+div a {
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+div a img {
+	height: 100%;
+	width: 100%;
+}
+
+div p {
+	background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0,0.7);
+	bottom: 0;
+	color: white;
+	margin: 0;
+	padding: 16px;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	z-index: 1;
+}
+
+footer {
+	border-top: 1px solid black;
+}
+
+h2 {
+	text-align: center;
+}
+
+header {
+	background-color: white;
+	/* background-image: url("homeImages/landingBanner.png"); */
+	background-image: radial-gradient(ellipse farthest-side at 50% 80%, white 80%, #8080ff); 
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-bottom: 1px solid black;
+	color: #0066ff;
+	font-size: 2rem;
+	height: 200px;
+	margin-bottom: 25px;
+	position: relative;
+}
+
+header p {
+	bottom: -15%;
+	display: inline-block;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+
+nav:after {
+	clear: both;
+	content: "";
+	display: table;
+}
+
+section {
+	background-color: #eeeeee;
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+}
+
+.column {
+	float: left;
+	width: 50%;
+}
+
+.portal {
+	border: 1px solid black;
+	height: 300px;
+	display: inline-block;
+	margin: 0 10%;
+	position: relative;
+	width: 80%;
+}
+
+@media screen and (max-width: 600px) {
+	.column {
+		width: 100%;
+	}
+}
