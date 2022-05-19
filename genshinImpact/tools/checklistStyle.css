@@ -1,0 +1,162 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	background-color: #7688E5;
+	font-family: "Verdana, Helvetica, sans-serif"; 
+	font-size: 16px;
+}
+
+h2 {
+	color: #0C1337;
+	text-align: center;
+}
+
+input:checked {
+	background-color: #66ff66;
+}
+
+label {
+	background-color: #ff6666;
+	cursor: pointer;
+	font-size: 1.5em;
+}
+
+nav, section, #statusContainer {
+	background-color: #CDDFF4;
+	border-radius: 5px;
+	color: #000000;
+	margin: 20px auto;
+}
+
+nav li {
+	border-right: 1px solid #7688E5;
+	float: left;
+}
+
+nav li a {
+	color: #000000;
+	display: block;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+}
+
+nav li a:hover, nav li a:active {
+	background-color: #eaf2fa;
+}
+
+nav ul {
+	margin: 0;
+	list-style-type: none;
+	overflow: hidden;
+	padding: 0;
+}
+
+section {
+	padding: 5px 0;
+}
+
+.legendDiv {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	padding-right: 10px;
+}
+
+.optionalLabel {
+	background-color: #00ccff;
+}
+
+.right {
+	border-left: 1px solid #7688E5;
+	border-right: none;
+	float: right;
+}
+
+.statusBox {
+	background-color: #aaaaaa;
+	border-radius: 5px;
+	display: inline-block;
+	float: left;
+	font-size: 2em;
+	margin-right: 20px;
+}
+
+.taskList {
+	display: inline-block;
+	padding: 10px;
+}
+
+#completeDiv {
+	background-color: #66ff66;
+}
+
+#dailyList {
+	border: 1px solid white;
+}
+
+#incompleteDiv {
+	background-color: #ff6666;
+}
+
+#optionalDiv {
+	background-color: #00ccff;
+}
+
+#currentLink {
+	color: #0000dd;
+}
+
+#legendContainer {
+	background-color: #CDDFF4;
+	border: 4px solid black;
+	border-radius: 10px;
+	margin: 10px auto;
+	padding: 5px;
+	width: 40%;
+}
+
+#explanationSection {
+	padding: 5px;
+}
+
+#statusContainer::after {
+	content:"";
+	clear: both;
+	display: table;
+}
+
+#tabDiv {
+	display: inline-block;
+	margin: 0;
+}
+
+#tabDiv div {
+	background-color: white;
+	cursor: pointer;
+	display: inline-block;
+	float: left;
+	font-size: 1.5em;
+	padding: 5px;
+}
+
+#tabDiv div:hover {
+	background-color: #eeeeee;
+}
+
+#tabDiv .active {
+	color: blue;
+}
+
+#weeklyList {
+	display: none;
+}
+
+@media screen and (max-width: 600px) {
+	nav li {
+		text-align: center;
+		width: 100%;
+	}
+}
