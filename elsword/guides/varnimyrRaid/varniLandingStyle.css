@@ -1,0 +1,101 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-family: "Verdana, Helvetica, sans-serif";
+	font-size: 16px;
+}
+
+body {
+	background-color: #7688E5;
+}
+
+div a {
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+div a img {
+	height: 100%;
+	width: 100%;
+}
+
+div p {
+	background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0,0.7);
+	bottom: 0;
+	color: white;
+	margin: 0;
+	padding: 16px;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	z-index: 1;
+}
+
+header {
+	background-image: url("varniLandingBanner.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	font-size: 2rem;
+	height: 200px;
+	margin-bottom: 25px;
+	position: relative;
+}
+
+header span {
+	bottom: 10%;
+	color: white;
+	font-size: 4rem;
+	font-variant: small-caps;
+	font-weight: bold;
+	position: absolute;
+	right: 10%;
+	text-shadow: -1px -1px 0 #ff0000, -1px 1px 0 #ff0000, 1px 1px 0 #ff0000, 1px -1px 0 #ff0000;
+}
+
+nav:after {
+	clear: both;
+	content: "";
+	display: table;
+}
+
+.column {
+	float: left;
+	width: 50%;
+}
+
+.portal {
+	border: 1px solid black;
+	height: 300px;
+	display: inline-block;
+	margin: 0 10%;
+	position: relative;
+	width: 80%;
+}
+
+#homeLink {
+	background-color: #1177dd;
+	color: #260d26;
+	display: block;
+	font-size: 1.25rem;
+	margin: 10px auto 0 auto;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	width: 25%;
+}
+
+#homeLink:hover, #homeLink:active {
+	background-color: #3399ff;
+}
+
+@media screen and (max-width: 600px) {
+	.column {
+		width: 100%;
+	}
+}
