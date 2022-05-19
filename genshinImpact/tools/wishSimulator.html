@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <title>Genshin Impact Wish Simulator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Hitonisan">
+  <link rel="stylesheet" type="text/css" href="wishSimStyle.css">
+</head>
+<body>
+  <header>
+  
+  </header>
+  <nav>
+    <ul>
+	  <li><a id="currentLink" href="#">Wish Simulator</a></li>
+	  <li><a href="genshinChecklist.html">Daily/Weekly Checklist</a></li>
+	  <li class="right"><a href="../genshinLanding.html">Main Genshin Page</a></li>
+	</ul>
+  </nav>
+  <section>
+    <h2>Genshin Impact Wish Simulator</h2>
+	<form id="simForm" onsubmit="runSim(); return false">
+	  <div class="half" id="mainOptions">
+	    Banner type:<br />
+	    <input type="radio" id="bannerStandard" name="bannerType" value="bannerStandard" onchange="optionSwitch()" checked="checked">
+		<label for="bannerStandard">Standard Banner</label><br />
+		<input type="radio" id="bannerEventChar" name="bannerType" value="bannerEventChar" onchange="optionSwitch()">
+		<label for="bannerEventChar">Event Character Banner</label><br />
+		<input type="radio" id="bannerEventWeap" name="bannerType" value="bannerEventWeap" onchange="optionSwitch()">
+		<label for="bannerEventWeap">Event Weapon Banner</label><br /><br />
+		
+		Simulation mode:<br />
+		<input type="radio" id="numWishes" name="simType" value="numWishes" onchange="optionSwitch()" checked="checked">
+		<label for="numWishes">Number of wishes</label><br />
+		<input type="radio" id="numResults" name="simType" value="numResults" onchange="optionSwitch()">
+		<label for="numResults">Number of desired results</label><br /><br />
+		
+		<label for="simGoal">Number of wishes/desired results to roll: </label>
+		<input type="number" id="simGoal" name="simGoal" min="1" max="10000000" step="1" value="1"><br /><br />
+		
+		<label for="pity4">4-star starting pity: </label>
+		<input type="number" id="pity4" name="pity4" min="0" max="9" step="1" value="0"><br />
+		<label for="pity5">5-star starting pity: </label>
+		<input type="number" id="pity5" name="pity5" min="0" max="89" step="1" value="0"><br />
+	  </div>
+	  <div class="half" id="conditionalOptions">
+	    <div id="eventCharFocus" class="desiredChoices">
+		  <input type="checkbox" id="guaranteeFeat4Star" name="guaranteeFeat4Star">
+		  <label for="guaranteeFeat4Star">Next 4-star is featured</label><br />
+		  <input type="checkbox" id="guaranteeFeat5Star" name="guaranteeFeat5Star">
+		  <label for="guaranteeFeat5Star">Next 5-star is featured</label><br /><br />
+		
+		  Desired result (event character banner):<br />
+		  <input type="radio" id="eventChar5Star" name="eventCharTarget" value="eventChar5Star" checked="checked">
+		  <label for="eventChar5Star">5-star featured character</label><br />
+		  <input type="radio" id="eventChar4Star1" name="eventCharTarget" value="eventChar4Star1">
+		  <label for="eventChar4Star1">4-star featured character 1</label><br />
+		  <input type="radio" id="eventChar4Star2" name="eventCharTarget" value="eventChar4Star2">
+		  <label for="eventChar4Star2">4-star featured character 2</label><br />
+		  <input type="radio" id="eventChar4Star3" name="eventCharTarget" value="eventChar4Star3">
+		  <label for="eventChar4Star3">4-star featured character 3</label><br /><br />
+		</div>
+		<div id="eventWeapFocus">
+		  Epitomized Path (event weapon banner):<br />
+		  <input type="radio" id="epitomizedOff" name="epitomizedChoice" value="epitomizedOff" checked="checked">
+		  <label for="epitomizedOff">Disabled</label><br />
+		  <input type="radio" id="epitomizedWeap1" name="epitomizedChoice" value="epitomizedWeap1">
+		  <label for="epitomizedWeap1">Weapon 1</label><br />
+		  <input type="radio" id="epitomizedWeap2" name="epitomizedChoice" value="epitomizedWeap2">
+		  <label for="epitomizedWeap2">Weapon 2</label><br />
+		  <label for="fatePoints">Starting number of Fate Points: </label>
+		  <input type="number" id="fatePoints" name="fatePoints" min="0" max="2" step="1" value="0"><br /><br />
+		  
+		  <div class="desiredChoices">
+		    Desired result (event weapon banner):<br />
+		    <input type="radio" id="eventWeap5Star1" name="eventWeapTarget" value="eventWeap5Star1" checked="checked">
+		    <label for="eventWeap5Star1">5-star featured weapon 1</label><br />
+		    <input type="radio" id="eventWeap5Star2" name="eventWeapTarget" value="eventWeap5Star2">
+		    <label for="eventWeap5Star2">5-star featured weapon 2</label><br />
+		    <input type="radio" id="eventWeap4Star1" name="eventWeapTarget" value="eventWeap4Star1">
+		    <label for="eventWeap4Star1">4-star featured weapon 1</label><br />
+		    <input type="radio" id="eventWeap4Star2" name="eventWeapTarget" value="eventWeap4Star2">
+		    <label for="eventWeap4Star2">4-star featured weapon 2</label><br />
+		    <input type="radio" id="eventWeap4Star3" name="eventWeapTarget" value="eventWeap4Star3">
+		    <label for="eventWeap4Star3">4-star featured weapon 3</label><br />
+		    <input type="radio" id="eventWeap4Star4" name="eventWeapTarget" value="eventWeap4Star4">
+		    <label for="eventWeap4Star4">4-star featured weapon 4</label><br />
+		    <input type="radio" id="eventWeap4Star5" name="eventWeapTarget" value="eventWeap4Star5">
+		    <label for="eventWeap4Star5">4-star featured weapon 5</label><br />
+		  </div>
+		</div>
+	  </div>
+	  <input type="submit" value="Simulate"></input>
+	</form>
+	<p id="resultP">Results will appear here.</p>
+  </section>
+  <section>
+    <h2>Explanation</h2>
+	<h3>Simulator Options</h3>
+	<p>Simulation mode:</p>
+	<ul>
+	  <li><b>Number of wishes</b>: simulate the given number of wishes</li>
+	  <li><b>Number of desired results</b>: perform wishes until a desired result is achieved the given number of times. Use other options to specify this result</li>
+	</ul>
+	<p>Banner type:</p>
+	<ul>
+	  <li><b>Standard banner</b>: AKA Wanderlust Invocation. The standard wish banner with no featured characters</li>
+	  <li><b>Event character banner</b>: the banner featuring specific characters, some of whom are exclusive to these banner types</li>
+	  <li><b>Event weapon banner:</b>: the banner featuring specific weapons, some of which are exclusive to these banner types</li>
+	</ul>
+	<p>Starting pity values:</p>
+	<ul>
+	  <li><b>4-star starting pity</b>: the starting number of wishes that have passed without receiving a 4-star pull on a given banner type. Maximum value of 9</li>
+	  <li><b>5-star starting pity</b>: the starting number of wishes that have passed without receiving a 5-star pull on a given banner type.
+	      Maximum value of 89 for standard and event character banners, maximum value of 79 for event weapon banners</li>
+	</ul>
+	<p>Featured roll status (event character and event weapon banners only):</p>
+	<ul>
+	  <li><b>Next 4-star is featured</b>: ensures that the next 4-star rolled is a featured character or weapon. Enable if your previous 4-star on an event banner
+	  was not a featured weapon or character</li>
+	  <li><b>Next 5-star is featured</b>: ensures that the next 5-star rolled is a featured character or weapon. Enable if your previous 5-star on an event banner was not
+	  a featured weapon or character</li>
+	</ul>
+	<p>Desired result (desired result mode only, not applicable to standard banner):</p>
+	<ul>
+	  <li><b>5-star featured character</b>: event character banner only. Have the simulator track the number of times you obtain that banner's
+	      featured 5-star character</li>
+      <li><b>4-star featured character 1/2/3</b>: event character banner only. Have the simulator track the number of times you obtain a certain
+	      featured 4-star character on the banner (each of the three 4-star characters is tracked separately)</li>
+	  <li><b>5-star featured weapon 1/2</b>: event weapon banner only. Have the simulator track the number of times you obtain a certain featured
+	       5-star weapon on the banner (both of the 5-star weapons are tracked separately)</li>
+	  <li><b>4-star featured weapon 1/2/3/4/5</b>: event weapon banner only. Have the simulator track the number of times you obtain a certain featured
+	       4-star weapon on the banner (each of the 4-star weapons is tracked separately)</li>
+	</ul>
+	<p>Epitomized Path options (event weapon banner only):</p>
+	<ul>
+	  <li><b>Disabled</b>: Epitomized Path will not be used, and Fate points will not be gathered</li>
+	  <li><b>Weapon 1/2</b>: use Epitomized Path to gather Fate points toward featured 5-star weapon 1/2</li>
+	  <li><b>Starting number of Fate Points</b>: the starting number of Fate Points Epitomized Path will dedicate towards your chosen weapon, if applicable
+	</ul>
+	<br />
+	<h3>Simulator Limitations</h3>
+	<h4>4-star and 5-star guarantee clashes</h4>
+	<p>The behavior of Genshin Impact's wish system is not entirely clear when it comes to resolving a scenario where a 4-star guarantee and 5-star guarantee
+	would trigger on the same wish. Finding exact information on this scenario has also proven considerably difficult due to its rarity and specific nature. 
+	To resolve this scenario, the simulator will replace the previous wish (which could have only been a 3-star - otherwise, one of the guarantees wouldn't
+	be triggering) with the 4-star guarantee trigger. Should this occur on the first wish in the simulator (meaning no prior wish exists), the 4-star guarantee
+	will instead be delayed until the next wish.<br /><br />
+	
+	Note that this system will not trigger if a 5-star (that isn't guaranteed) is rolled on the 4-star guarantee. In-game probabilities explicitly state that this is a possibility; on
+	the simulator, this will result in the 5-star being kept and the 4-star pity counter resetting.</p>
+	<br />
+	<h4>Non-featured 4-star rolls</h4>
+	<p>In-game probabilities claim that, barring modifications from featured character and weapon pull chances, there is a 50/50 split determining whether or not a 4-star item
+	will be a character or a weapon. While these statements are accurate regarding featured items, these statements are false regarding non-featured items.<br /><br />
+	
+	By observing <a href="https://paimon.moe/wish/tally">global pull data on paimon.moe</a>, biases can be seen in the event character and event weapon banner in non-featured
+	4-star items. For event character banners, the featured characters represent roughly 66.67% of the 4-star rolls, courtesy of the 50% pull chance and guarantee system. However,
+	around 5% of the 4-star rolls are non-featured characters, while 28.33% of the 4-stars are non-featured weapons. For event weapon banners, the featured weapons represent
+	roughly 80% of the 4-star rolls; then, 18.5% of the 4-stars are non-featured characters, and a mere 1.5% of the 4-stars are non-featured weapons.<br /><br />
+	
+	As this simulator was built around the in-game probabilities, <b>this simulator does not account for these falsehoods</b> - it will create approximately
+    the same quantities of non-featured 4-star characters and weapons. I may attempt to integrate an option that tries to mimic the actual wish behavior for
+	non-featured 4-star items should I find a sensible way to produce the real-world probabilities in the simulator.</p>
+	<br />
+	<h4>Soft pity</h4>
+	<p>By simulating a large number of wishes according to the probabilities given in-game in Genshin Impact, the base pull rates and guarantees are not sufficient
+	to match the given pull rate after pity. For instance, the game states that 5-star characters on an event character banner have a 1.6% average pull rate with pity applied.
+	Simulating a large number of pulls using only the 0.6% base pull chance and guaranteed 5-star on the 90th wish without a 5-star yields results that fall short of this 1.6%
+	claimed (simulated results tended to yield around a 1.435% chance). Similar conflicts arose simulating 4-star rolls on event character banners (the claimed average with pity
+	is 13%; simulated results with the 5.1% base pull rate and guaranteed 4-star on the 10th wish without a 4-star tended to yield around a 12.45% 4-star rate). It is clear that
+	a factor is missing and unstated in-game.<br /><br />
+	
+	The Genshin Impact community has compiled statistics on actual wishes performed by players, and noted that this missing factor is likely a form of "soft pity" that occurs well before
+	the guarantee on the 90th pull, which is referred to as "hard pity". Soft pity on an event character banner, based on these compiled statistics, was observed to begin around 73
+	wishes without pulling a 5-star. Soft pity notably increases the odds that a 5-star is pulled, thus raising the pull rate - this would provide the explanation for the 1.6% average
+	pull rate with pity given in game.<br /><br />
+	
+	<b>This simulator does not account for soft pity.</b> As a result, the wishes simulated here will likely yield slightly fewer 4-star and 5-star pulls than would be actually
+	encountered in-game. I may attempt to add an option to simulate soft pity in the future, provided that data is available for the banner type in question and I can properly
+	translate the statistical results into probabilities that influence the simulation.<br /><br />
+	
+	If you want to see some data and discussion regarding soft pity, please refer to these Reddit posts:</p>
+	<ul>
+	  <li><a href="https://www.reddit.com/r/Genshin_Impact/comments/jo9d9d/the_5_rate_is_not_uniform_06_there_is_a_soft_pity/">An Evaluation of the Possibility of Soft Pity</a></li>
+	  <li><a href="https://www.reddit.com/r/Genshin_Impact/comments/jod9o4/whale_watching_logs_2_the_blue_whale/">Frequency Graphs of 8991 Manually Observed Pulls</a></li>
+	  <li><a href="https://www.reddit.com/r/GenshinImpactTips/comments/s4hz2d/soft_pity_system_observation_of_a_sample_size_of/">Probability Graph of 260 Million Pulls Based on paimon.moe Data</a></li>
+	</ul>
+	
+	<h3>In-Game Probability Reference</h3>
+	<h4>Standard Banner</h4>
+	<table>
+	  <tr>
+	    <th>Result</th>
+		<th>Base probability</th>
+		<th>Average probability after pity</th>
+	  </tr>
+	  <tr>
+	    <td>5-star character/weapon</td>
+		<td>0.6%</td>
+		<td>1.6%</td>
+	  </tr>
+	  <tr>
+	    <td>4-star character/weapon</td>
+		<td>5.1%</td>
+		<td>13%</td>
+	  </tr>
+	  <tr>
+	    <td>3-star weapon</td>
+		<td>94.3%</td>
+		<td>85.4%</td>
+	  </tr>
+	</table>
+	<ul>
+		<li>If a 5-star result has not occurred after 89 wishes, the 90th wish will be a 5-star result</li>
+		<li>If a 4-star result has not occurred after 9 wishes, the 10th wish will be a 4-star result (unless a 5-star overrides it)</li>
+	</ul>
+	
+	<h4>Event Character Banner</h4>
+	<table>
+	  <tr>
+	    <th>Result</th>
+		<th>Base probability</th>
+		<th>Average probability after pity</th>
+	  </tr>
+	  <tr>
+	    <td>5-star character</td>
+		<td>0.6%</td>
+		<td>1.6%</td>
+	  </tr>
+	  <tr>
+	    <td>4-star character/weapon</td>
+		<td>5.1%</td>
+		<td>13%</td>
+	  </tr>
+	  <tr>
+	    <td>3-star weapon</td>
+		<td>94.3%</td>
+		<td>85.4%</td>
+	  </tr>
+	</table>
+	<ul>
+		<li>If a 5-star result has not occurred after 89 wishes, the 90th wish will be a 5-star result</li>
+		<li>If a 4-star result has not occurred after 9 wishes, the 10th wish will be a 4-star result (unless a 5-star overrides it)</li>
+		<li>One 5-star character will be featured on this banner; if a 5-star result is rolled, it has a 50% chance of being the featured 5-star character</li>
+		<li>Three 4-star characters will be featured on this banner; if a 4-star result is rolled, it has a 50% chance of being one of the featured 4-star characters</li>
+		<li>If a 5-star result was not the featured 5-star character, the next 5-star result will be the featured 5-star character</li>
+		<li>If a 4-star result was not a featured 4-star character, the next 4-star result will be one of the featured 4-star characters</li>
+	</ul>
+	
+	<h4>Event Weapon Banner</h4>
+	<table>
+	  <tr>
+	    <th>Result</th>
+		<th>Base probability</th>
+		<th>Average probability after pity</th>
+	  </tr>
+	  <tr>
+	    <td>5-star weapon</td>
+		<td>0.7%</td>
+		<td>1.85%</td>
+	  </tr>
+	  <tr>
+	    <td>4-star character/weapon</td>
+		<td>6%</td>
+		<td>14.5%</td>
+	  </tr>
+	  <tr>
+	    <td>3-star weapon</td>
+		<td>93.3%</td>
+		<td>83.65%</td>
+	  </tr>
+	</table>
+	<ul>
+		<li>If a 5-star result has not occurred after 79 wishes, the 80th wish will be a 5-star result</li>
+		<li>If a 4-star result has not occurred after 9 wishes, the 10th wish will be a 4-star result (unless a 5-star overrides it)</li>
+		<li>Two 5-star weapons will be featured on this banner; if a 5-star result is rolled, it has a 75% chance of being one of the featured 5-star weapons</li>
+		<li>Five 4-star weapons will be featured on this banner; if a 4-star result is rolled, it has a 75% chance of being one of the featured 4-star weapons</li>
+		<li>If a 5-star result was not a featured 5-star weapon, the next 5-star result will be one of the featured 5-star weapons</li>
+		<li>If a 4-star result was not a featured 4-star weapon, the next 4-star result will be one of the featured 4-star weapons</li>
+		<li>The player may enable Epitomized Path, which selects one of the featured 5-star weapons of the player's choosing as a target. If a 5-star weapon is rolled
+		and it is not the targeted weapon, a Fate point is acquired. If two Fate points are acquired, the next 5-star weapon rolled on the banner will be the targeted
+		5-star weapon. Fate points reset to 0 when the targeted 5-star weapon is rolled on this banner (even if Epitomized Path did not force this). Fate points are reset
+		to 0 if the featured weapons on the banner change.</li>
+	</ul>
+  </section>
+  
+  <script src="wishSimScript.js"></script>
+</body>
+</html>

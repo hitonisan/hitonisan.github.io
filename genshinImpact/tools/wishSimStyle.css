@@ -1,0 +1,126 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	background-color: #7688E5;
+	font-family: "Verdana, Helvetica, sans-serif";
+	font-size: 16px;
+}
+
+form {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 20px auto;
+	overflow: hidden;
+	padding: 5px;
+	width: 100%;
+}
+
+h2, h3 {
+	color: #0C1337;
+	text-align: center;
+}
+
+input[type="number"] {
+	padding: 5px;
+}
+
+input[type="number"]:focus {
+	background-color: #80ffff;
+}
+
+input[type="submit"] {
+	background-color: #7688E5;
+	color: white;
+	font-size: 24px;
+	padding: 5px;
+}
+
+input[type="submit"]:hover {
+	background-color: #a9b5ef;
+}
+
+nav, section {
+	background-color: #CDDFF4;
+	border-radius: 5px;
+	color: #000000;
+	margin: 20px auto;
+}
+
+nav li {
+	border-right: 1px solid #7688E5;
+	float: left;
+}
+
+nav li a {
+	color: #000000;
+	display: block;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+}
+
+nav li a:hover, nav li a:active {
+	background-color: #eaf2fa;
+}
+
+nav ul {
+	margin: 0;
+	list-style-type: none;
+	overflow: hidden;
+	padding: 0;
+}
+
+section {
+	padding: 5px;
+}
+
+table, td, th {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+td, th {
+	padding: 2px;
+}
+
+.half {
+	border: 2px groove #7688E5;
+	border-radius: 10px;
+	flex-grow: 1;
+	flex-basis: 50%;
+	float: left;
+	padding: 5px;
+	width: 50%;
+}
+
+.right {
+	border-left: 1px solid #7688E5;
+	border-right: none;
+	float: right;
+}
+
+#currentLink {
+	color: #0000dd;
+}
+
+#mainOptions {
+	border-right: none;
+}
+
+@media screen and (max-width: 600px) {
+	nav li {
+		text-align: center;
+		width: 100%;
+	}
+	
+	.half {
+		flex-basis: 100%;
+		width: 100%;
+	}
+	
+	#mainOptions {
+		border-right: 2px groove #7688E5;
+	}
+}
