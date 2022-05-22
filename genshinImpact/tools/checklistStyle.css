@@ -8,6 +8,10 @@ html {
 	font-size: 16px;
 }
 
+form {
+	width: 90%;
+}
+
 h2 {
 	color: #0C1337;
 	text-align: center;
@@ -17,10 +21,22 @@ input:checked {
 	background-color: #66ff66;
 }
 
+input[type="checkbox"] {
+	display: none;
+}
+
 label {
 	background-color: #ff6666;
+	border-bottom: 1px solid white;
 	cursor: pointer;
+	display: block;
 	font-size: 1.5em;
+	padding: 10px;
+	width: 100%;
+}
+
+label:last-child {
+	border-bottom: none;
 }
 
 nav, section, #statusContainer {
@@ -86,7 +102,6 @@ section {
 
 .taskList {
 	display: inline-block;
-	padding: 10px;
 }
 
 #completeDiv {
