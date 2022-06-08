@@ -59,6 +59,17 @@ Probability divisions:
 	-5-star: 994 to 1000 (0.7%, so 7 possible values)
 	  -First, make a 1-750 roll to see if a featured weapon is hit
 	  -If that hits, make a roll and divide by sections of 500 to find out which of the 2 featured weapons it'll be
+	  
+-Non-featured 4-star rolls, using real-world data:
+  -Standard banner lacks featured rolls, so no analysis is necessary
+  -Event character banner:
+    -66.67% of rolls are featured 4-star characters
+	-5% of rolls are non-featured 4-star characters (15% of overall non-featured 4-stars) (1 to 150 - 15%, so 150 possible values)
+	-28.33% of rolls are 4-star weapons (85% of overall non-featured 4-stars) (151 to 1000 - 85%, so 850 possible values)
+  -Event weapon banner:
+    -80% of rolls are featured 4-star weapons
+	-18.5% of rolls are 4-star characters (92.5% of overall non-featured 4 stars) (1 to 925 - 92.5%, so 925 possible values)
+	-1.5% of rolls are non-featured 4-star weapons (7.5% of overall non-featured 4 stars) (926 to 1000 - 7.5%, so 75 possible values)
 */
 
 //Form elements relevant to all simulations
@@ -71,6 +82,7 @@ const pity5Input = document.getElementById("pity5"); //Numeric value for startin
 //Form elements that may be used, depending on other options' values
 const guarantee4StarToggle = document.getElementById("guaranteeFeat4Star"); //Checkbox for assuring a featured 4-star roll is next
 const guarantee5StarToggle = document.getElementById("guaranteeFeat5Star"); //Checkbox for assuring a featured 5-star roll is next
+const realNonFeat4StarOdds = document.getElementById("realNonFeat4Star"); //Checkbox toggling 50/50 or realistic 4-star odds for non-featured pulls
 const eventCharTargets = document.getElementsByName("eventCharTarget"); //Radio buttons for desired result in event character banners
 const epitomizedPathOpts = document.getElementsByName("epitomizedChoice"); //Radio buttons determining how Epitomized Path should be used
 const fatePointInput = document.getElementById("fatePoints"); //Numeric value for starting Fate Point count in Epitomized Path
@@ -108,6 +120,8 @@ var count4weapFeat5 = 0; //4-star featured weapon 5 pulls (event weapon banner)
 
 var wishCount = 0; //The total number of wishes performed; for use during desired goal simulations
 
+var nonFeat4Threshold = 500; //Probability variable used to determine whether or not a non-featured 4-star roll is a weapon or character
+
 var feat5Miss = false; //Flag for featured 5-star guarantee on missed 5-star roll
 var feat4Miss = false; //Flag for featured 4-star guarantee on missed 4-star roll
 var fateActive = 0; //Flag for using Epitomized Path (event weapon banner): 0 to disable, 1 for weapon 1, 2 for weapon 2
@@ -132,6 +146,8 @@ function optionSwitch() {
 		guarantee4StarToggle.disabled = "disabled";
 		guarantee5StarToggle.disabled = "disabled";
 		
+		realNonFeat4StarOdds.disabled = "disabled";
+		
 		for (i=0; i < eventCharTargets.length; i++) {
 		  eventCharTargets[i].disabled = "disabled";
 	    }
@@ -149,6 +165,8 @@ function optionSwitch() {
 		
 		guarantee4StarToggle.removeAttribute("disabled");
 		guarantee5StarToggle.removeAttribute("disabled");
+		
+		realNonFeat4StarOdds.removeAttribute("disabled");
 		
 		if (simTypes[1].checked) {
 		  for (i=0; i < eventCharTargets.length; i++) {
@@ -174,6 +192,8 @@ function optionSwitch() {
 		
 		guarantee4StarToggle.removeAttribute("disabled");
 		guarantee5StarToggle.removeAttribute("disabled");
+		
+		realNonFeat4StarOdds.removeAttribute("disabled");
 		
 		for (i=0; i < eventCharTargets.length; i++) {
 		  eventCharTargets[i].disabled = "disabled";
@@ -295,6 +315,8 @@ function initializeVars() {
 	feat4Miss = false;
 	fateActive = 0;
 	fateCount = 0;
+	
+	nonFeat4Threshold = 500;
 	
 	wishCount = 0;
 	
@@ -435,6 +457,11 @@ function runStandardSim() {
 
 //Event character banner simulation
 function runEventCharSim() {
+	//Set 4-star non-featured pull threshold, if necessary
+	if (realNonFeat4StarOdds.checked) {
+		nonFeat4Threshold = 150;
+	}
+	
 	//Separate sim by goal type
 	if (targetedSim == false) { //Wish count
 		//Check for 4-star and 5-star collision on first wish; resolve if necessary
@@ -491,7 +518,7 @@ function runEventCharSim() {
 					 feat4Miss = true;
 					 
 					 randVal = getRandVal(1000);
-					 if (randVal >= 501) { //4-star weapon
+					 if (randVal > nonFeat4Threshold) { //4-star weapon
 						 count4weapAny++;
 					 }
 					 else { //4-star non-featured character
@@ -570,7 +597,7 @@ function runEventCharSim() {
 						feat4Miss = true;
 						
 						randVal = getRandVal(1000);
-						if (randVal >= 501) { //4-star weapon
+						if (randVal > nonFeat4Threshold) { //4-star weapon
 							count4weapAny++;
 						}
 						else { //4-star non-featured character
@@ -709,7 +736,7 @@ function runEventCharSim() {
 					 feat4Miss = true;
 					 
 					 randVal = getRandVal(1000);
-					 if (randVal >= 501) { //4-star weapon
+					 if (randVal > nonFeat4Threshold) { //4-star weapon
 						 count4weapAny++;
 					 }
 					 else { //4-star non-featured character
@@ -808,7 +835,7 @@ function runEventCharSim() {
 						feat4Miss = true;
 						randVal = getRandVal(1000);
 						  
-						if (randVal >= 501) { //4-star weapon
+						if (randVal > nonFeat4Threshold) { //4-star weapon
 							count4weapAny++;
 						}
 						else { //4-star non-featured character
@@ -907,6 +934,11 @@ function runEventWeapSim() {
 		}
 	}
 	
+	//Set 4-star non-featured pull threshold, if necessary
+	if (realNonFeat4StarOdds.checked) {
+		nonFeat4Threshold = 925;
+	}
+	
 	//Separate sim by goal type
 	if (targetedSim == false) { //Wish count mode
 		//Check for 4-star and 5-star guarantee collision on first wish, resolve if necessary
@@ -1003,7 +1035,7 @@ function runEventWeapSim() {
 						feat4Miss = true;
 						
 						randVal = getRandVal(1000);
-						if (randVal >= 501) { //Non-featured 4-star weapon
+						if (randVal > nonFeat4Threshold) { //Non-featured 4-star weapon
 							count4weapAny++;
 						}
 						else { //4-star character
@@ -1161,7 +1193,7 @@ function runEventWeapSim() {
 						feat4Miss = true;
 						
 						randVal = getRandVal(1000);
-						if (randVal >= 501) { //Non-featured 4-star weapon
+						if (randVal > nonFeat4Threshold) { //Non-featured 4-star weapon
 							count4weapAny++;
 						}
 						else { //4-star character
@@ -1396,7 +1428,7 @@ function runEventWeapSim() {
 						feat4Miss = true;
 						
 						randVal = getRandVal(1000);
-						if (randVal >= 501) { //Non-featured 4-star weapon
+						if (randVal > nonFeat4Threshold) { //Non-featured 4-star weapon
 							count4weapAny++;
 						}
 						else { //4-star character
@@ -1606,7 +1638,7 @@ function runEventWeapSim() {
 						feat4Miss = true;
 						
 						randVal = getRandVal(1000);
-						if (randVal >= 501) { //Non-featured 4-star weapon
+						if (randVal > nonFeat4Threshold) { //Non-featured 4-star weapon
 							count4weapAny++;
 						}
 						else { //4-star character
