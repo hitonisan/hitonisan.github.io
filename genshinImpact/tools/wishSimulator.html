@@ -51,6 +51,9 @@
 		  <label for="guaranteeFeat4Star">Next 4-star is featured</label><br />
 		  <input type="checkbox" id="guaranteeFeat5Star" name="guaranteeFeat5Star">
 		  <label for="guaranteeFeat5Star">Next 5-star is featured</label><br /><br />
+		  
+		  <input type="checkbox" id="realNonFeat4Star" name="realNonFeat4Star">
+		  <label for="realNonFeat4Star">Use realistic odds for non-featured 4-star pulls</label><br /><br />
 		
 		  Desired result (event character banner):<br />
 		  <input type="radio" id="eventChar5Star" name="eventCharTarget" value="eventChar5Star" checked="checked">
@@ -123,6 +126,11 @@
 	  <li><b>Next 5-star is featured</b>: ensures that the next 5-star rolled is a featured character or weapon. Enable if your previous 5-star on an event banner was not
 	  a featured weapon or character</li>
 	</ul>
+	<p>Realistic non-featured 4-star pull behavior (event character and event weapon banners only):</p>
+	<ul>
+	  <li><b>Use realistic odds for non-featured 4-star pulls</b>: if enabled, the probabilities used when determining non-featured 4-star rolls will be accurate to real-world
+	  wish data instead of the 50/50 odds claimed by in-game probabilities. See Simulator Limitations below for more details.</li>
+	</ul>
 	<p>Desired result (desired result mode only, not applicable to standard banner):</p>
 	<ul>
 	  <li><b>5-star featured character</b>: event character banner only. Have the simulator track the number of times you obtain that banner's
@@ -161,9 +169,9 @@
 	around 5% of the 4-star rolls are non-featured characters, while 28.33% of the 4-stars are non-featured weapons. For event weapon banners, the featured weapons represent
 	roughly 80% of the 4-star rolls; then, 18.5% of the 4-stars are non-featured characters, and a mere 1.5% of the 4-stars are non-featured weapons.<br /><br />
 	
-	As this simulator was built around the in-game probabilities, <b>this simulator does not account for these falsehoods</b> - it will create approximately
-    the same quantities of non-featured 4-star characters and weapons. I may attempt to integrate an option that tries to mimic the actual wish behavior for
-	non-featured 4-star items should I find a sensible way to produce the real-world probabilities in the simulator.</p>
+	An option is available to toggle how the simulator approaches these non-featured 4-star roll odds. If the option is disabled, the simulator will use the even 50/50 split
+	for characters and weapons as described in in-game probabilities. If the option is enabled, the simulator will use probabilities that attempt to emulate the results reflected
+	in the actual wish data seen on paimon.moe.</p>
 	<br />
 	<h4>Soft pity</h4>
 	<p>By simulating a large number of wishes according to the probabilities given in-game in Genshin Impact, the base pull rates and guarantees are not sufficient
