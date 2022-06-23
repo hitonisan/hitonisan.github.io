@@ -170,7 +170,10 @@ th, td {
 	}
 	
 	.dropdown-content {
-		width: 50%;
+		width: 50%; /* In case calc is not supported */
+		width: -moz-calc(50% - 8px);
+		width: -webkit-calc(50% - 8px);
+		width: calc(50% - 8px); /* To counteract one 8px margin of the document body */
 	}
 	
 	.dropdown-content a {
@@ -191,7 +194,10 @@ th, td {
 	}
 	
 	.dropdown-content {
-		width: 100%;
+		width: 100%; /* In case calc is not supported */
+		width: -moz-calc(100% - 16px);
+		width: -webkit-calc(100% - 16px);
+		width: calc(100% - 16px); /* To counteract two 8px margins of the document body */
 	}
 	
 	.dropdown-content a {
