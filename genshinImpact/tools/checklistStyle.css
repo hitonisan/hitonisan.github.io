@@ -146,6 +146,7 @@ section {
 #tabDiv {
 	display: inline-block;
 	margin: 0;
+	margin-bottom: -5px;
 }
 
 #tabDiv div {
