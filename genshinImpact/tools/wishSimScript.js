@@ -911,8 +911,8 @@ function runEventWeapSim() {
 			resultContainer.innerHTML = "Error: the starting number of Fate Points cannot be negative.";
 			return;
 		}
-		else if (fateCount > 2) {
-			resultContainer.innerHTML = "Error: the starting number of Fate Points cannot exceed 2.";
+		else if (fateCount > 1) {
+			resultContainer.innerHTML = "Error: the starting number of Fate Points cannot exceed 1.";
 			return;
 		}
 	}
@@ -928,8 +928,8 @@ function runEventWeapSim() {
 			resultContainer.innerHTML = "Error: the starting number of Fate Points cannot be negative.";
 			return;
 		}
-		else if (fateCount > 2) {
-			resultContainer.innerHTML = "Error: the starting number of Fate Points cannot exceed 2.";
+		else if (fateCount > 1) {
+			resultContainer.innerHTML = "Error: the starting number of Fate Points cannot exceed 1.";
 			return;
 		}
 	}
@@ -949,7 +949,7 @@ function runEventWeapSim() {
 			pity5 = 0;
 			
 			//Determine if the 5-star weap is featured or not; Epitomized Path may play a role in this
-			if (fateCount == 2) { //Epitomized Path forcing a featured weapon
+			if (fateCount == 1) { //Epitomized Path forcing a featured weapon
 				if (fateActive == 1) {
 					count5WeapFeat1++;
 				}
@@ -1052,7 +1052,7 @@ function runEventWeapSim() {
 				
 				//Check for featured weapon
 				randVal = getRandVal(1000);
-				if (fateCount == 2) { //Forced featured 5-star weapon via Epitomized Path
+				if (fateCount == 1) { //Forced featured 5-star weapon via Epitomized Path
 					fateCount = 0;
 					feat5Miss = false;
 					
@@ -1114,7 +1114,7 @@ function runEventWeapSim() {
 					
 					//Check to see if a featured weapon was hit
 					randVal = getRandVal(1000);
-					if (fateCount == 2) { //Epitomized Path forcing featured 5-star weapon hit
+					if (fateCount == 1) { //Epitomized Path forcing featured 5-star weapon hit
 					    fateCount = 0;
 						feat5Miss = false;
 						
@@ -1231,7 +1231,7 @@ function runEventWeapSim() {
 		resultContent += "Current 5-star pity count: " + pity5 + "<br />";
 	    resultContent += "Current 4-star pity count: " + pity4 + "<br />";
 		
-		if (fateCount == 2) {
+		if (fateCount == 1) {
 			resultContent += "Next 5-star weapon will be the weapon chosen through Epitomized Path<br />";
 		}
 		else if (feat5Miss) {
@@ -1306,7 +1306,7 @@ function runEventWeapSim() {
 			pity5 = 0;
 			
 			//Determine if the 5-star weap is featured or not; Epitomized Path may play a role in this
-			if (fateCount == 2) { //Epitomized Path forcing a featured weapon
+			if (fateCount == 1) { //Epitomized Path forcing a featured weapon
 				if (fateActive == 1) {
 					count5WeapFeat1++;
 					
@@ -1445,7 +1445,7 @@ function runEventWeapSim() {
 				
 				//Check for featured weapon
 				randVal = getRandVal(1000);
-				if (fateCount == 2) { //Forced featured 5-star weapon via Epitomized Path
+				if (fateCount == 1) { //Forced featured 5-star weapon via Epitomized Path
 					fateCount = 0;
 					feat5Miss = false;
 					
@@ -1523,7 +1523,7 @@ function runEventWeapSim() {
 					
 					//Check to see if a featured weapon was hit
 					randVal = getRandVal(1000);
-					if (fateCount == 2) { //Epitomized Path forcing featured 5-star weapon hit
+					if (fateCount == 1) { //Epitomized Path forcing featured 5-star weapon hit
 					    fateCount = 0;
 						feat5Miss = false;
 						
@@ -1676,7 +1676,7 @@ function runEventWeapSim() {
 		resultContent += "Current 5-star pity count: " + pity5 + "<br />";
 	    resultContent += "Current 4-star pity count: " + pity4 + "<br />";
 		
-		if (fateCount == 2) {
+		if (fateCount == 1) {
 			resultContent += "Next 5-star weapon will be the weapon chosen through Epitomized Path<br />";
 		}
 		else if (feat5Miss) {
