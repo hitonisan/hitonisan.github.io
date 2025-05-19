@@ -1,0 +1,80 @@
+The Hexenzirkel's trial will lead off with ordinary chess rules that aren't too difficult to follow, but will quickly toss that aside for a royal duel that requires more care and attention. Counter your opponent's movements with your own tactics, and this game will be yours.
+
+The first half of this boss fight restricts multiple attacks based on the movements of chess pieces - knowing the basic rules of chess piece movement will intuitively tell you how to manage some of the attacks here.
+
+You will need reliable access to Hydro and Cryo for the second half of this boss fight - ensure that this is part of your party before starting.
+
+===========
+
+Phase 1, Part 1 - The King
+
+
+In the first phase, an animated chess king comes to life in an attempt to stomp and run you over. You'll need to time your attacks, as multiple attacks put the king in the air and grounded skills will whiff if he's that high up.
+
+The king can approach you with stomp attacks, moving one square at a time based on a chess king's movements. Up to three stomps can be performed in a row, with the number performed varying at random. Get away from the square the king lands on, dashing if necessary. I would recommend waiting for the stomps to finish before attacking, as trying to attack when another stomp is going to be performed is an excellent way to hit nothing.
+
+The king may also build up Pyro energy to slam down with harsher force, burning all of the squares 1 tile away from it. All conventional ways of dodging work here - you can just dash out of range, dash in time with the slam, or counterattack with a burst.
+
+The king has a chariot, and can use it to run to the other end of the board. If he does, a pair of rooks will rush down the board in a straight line, and multiple knights will spawn to try and leap upon you. Make reaching the king your objective - dash horizontally to get out of the path of the rooks, then make a beeline for the king. The knights will never land on the king's square, so being aggressive is relatively safe here. Be wary of a knight occasionally landing one tile away from the king, however.
+
+The king may mount its chariot and gain a shield while summoning three pawns to the field. Getting within one square of a pawn will provoke an aimed laser attack, as indicated by warning lights, so either stay out of range or dash away from the aimed tile. The king will attempt to move to the column or row you're on before rushing forwards. If the king hits a pawn this way, it will destroy the pawn. Destroy all of the pawns by baiting the king this way to shatter its shield and stun it.
+
+The king may also elevate itself upon an Electro bishop, gaining immunity to damage and an Electro infusion. The bishop will hop around the board in groups of up to three movements, sending electric blasts along the diagonals that you must avoid. Break the Electro infusion to send the king plummeting back to the board, stunned.
+
+
+Phase 1, Part 2 - The Queen
+
+
+Once the king reaches low health, it will exit the field and summon a queen to replace it. This queen must be defeated to progress the fight.
+
+The queen has a variation of the king's stomp, where it will stomp upon a tile as well as either each tile one tile horizontally or vertically away, or one tile diagonally away. If it stomps twice, it will pick the tiles it didn't target with the first stomp. Continue to stay out of the way as you have up to this point.
+
+The queen also has a charged blast that will hit the full scope of a queen's movement, covering all vertical, horizontal, and diagonal lines. Either dash to a safe square or counterattack with a burst. If you need to get to a safe square, getting a knight's movement away from the queen's tile will always work.
+
+Try to stay close to the queen - if you're too far away, it can build up Pyro energy to unleash a torrent of aimed projectiles. In this scenario, get sufficient distance, then dash in a single direction to avoid the barrage.
+
+If the queen brandishes a pair of blades, it's going to spin in your direction. Note that this attack is still limited to a one tile movement in any direction on the chess board - use this fact to determine the range of the blades and manipulate where the queen goes.
+
+Defeating the queen will force the king back onto the board. It's helpless and has lowered resistances, so use this time to heal and gather as much energy as you can before the next phase.
+
+===========
+
+Phase 2 - The Ascended Monarchs
+
+
+The second phase has the king and queen take humanoid form, combatting you simultaneously. You'll need to strike both monarchs down to win the battle here.
+
+The king and queen prefer to fight you one at a time - when they perform solo attacks, the other royal will often step back and away from you. The royals may also dash away if one monarch's attacks would end up colliding with their partner (which can usually happen if you bait the king into leaping at the queen). This means opportunities to attack both bosses at once are limited, so be wary of chances to strike the duo.
+
+That said, while the other royal isn't trying to attack you while distant, getting too close to them can provoke them into attacking anyways. If this leads to a situation where both the king and queen perform solo attacks, be VERY careful - getting hit by both of their attacks will sum up to hefty damage on top of a Vaporize or Overload reaction, which is likely enough to kill a character from full health if they aren't a HP/DEF character.
+
+Should one of the monarchs be defeated, what happens next depends on how much health the remaining royal has. If their health is high enough, they will transfer their health to the other monarch to revive them. If their health is too low, the remaining monarch will enter an enhanced state, lowering their resistances while increasing their damage output to devastating levels. (The King also slams flaming fists down while doing so, which is an actual attack, so don't be too close.) Dodging will become paramount in this case, as the royal could likely take out a character in two hits here.
+
+
+The king's preferred solo attack at close range is a combo attack with up to three parts. It begins with a single sword slash that can simply be dashed. Next is a chest-first charging attack that can also be dodged or run away from. Lastly, the king will perform a rapid spinning attack with burning fists that you need to get away from. This combo attack does not have to be performed in full - the king can end it after just the sword swing if you're too far away, and the king can also start with the ramming attack (omitting the sword altogether).
+
+If you're distant, the king will put himself in a cannon and launch himself to your location - avoid both the cannon blast that launches him as well as his impact site. He will then raise up his sword to unleash blasts in a line that he attempts to aim at you - either stay near his back so he can't adjust his aim enough to reach you, or time a dash to the line approaching you.
+
+The queen prefers magic as her means of attack. Her main close-ranged attack creates a Hydro blast around her, followed by a second blast with greater range that doesn't hit near the queen. Deal with the first blast via any means you please (even dashing with proper timing works), then approach the queen to nullify the second blast.
+
+The queen also has a pair of smaller, swifter magic attacks. She may project four Electro thorns before firing them off in a line - quickly get to the side of her to be safe. She can also summon an aquatic knight before slamming it down - dash away from the impact site. You can often expect to see both of these attacks one after the other.
+
+
+The king and queen also have access to multiple combination attacks. If the queen gets airborne, she'll create a Hydro vortex that draws you in (but doesn't do damage). The king will wield a Pyro knight as a flamethrower, slowly walking around with it. The key here is that the king is very slow to adjust his aim, meaning you can get behind him and stay there to be safe and have some attacking opportunities. Note that grounded attacks can still hit the queen here, meaning she's more vulnerable than she seems.
+
+If the king and queen group up together at a distance, a chain of attacks will follow. The queen leads off with a single Electro swipe that can be dashed. The king will follow by leaping to an indicated zone you should avoid. The queen then pulls out an Electro minigun to fire a sequence of aimed shots - run in a single direction, preferably closer to the Queen. Lastly, the king will launch a flaming piece into the air, landing with an explosion aimed at your position - get out of the way. The king tends to be a more reliable target to pursue for damage as the attack ends.
+
+Should the king and queen become distant, the king will be launched out of a cannon, landing with a burning impact at your position. Get out of the way, and don't be where the cannon explodes.
+
+
+The king and queen have a pair of Lethal Blow attacks they will use at intervals throughout the fight. Using Frozen reactions (and to a lesser extent, Cryo attacks in general) on the monarch charging attack will build a gauge up. Fill the gauge to freeze the monarch. If the king was charging the Lethal Blow, this will immediately result in him being struck by lightning, stunning him. In the queen's case, the king is charging in straight lines, and one of these charges must be baited into the frozen queen to end the Lethal Blow. She will eventually unfreeze if you take too long. Fail to interrupt the Lethal Blow, and you'll be hit with an unavoidable instant kill.
+
+
+As the second phase progresses, be mindful of the severe damage that the Lethal Blows will do to the monarchs when determining who to attack. From my experience, it's often in your best interest to focus the bulk of your attacks on the King, as the Queen takes far heavier damage from broken Lethal Blows than the King does. It would be wasteful to keep attacking a monarch when an upcoming Lethal Blow can take care of the rest of their health for you.
+
+==========
+
+0:00 - Spoiler Warning
+0:07 - Leyline Disorder
+0:21 - The Fight
+7:28 - Character Stats
